@@ -8,16 +8,14 @@
     <meta content="OnlyFlow" property="og:title"/>
     <meta content="Optical Flow based Motion Conditioning for Video Diffusion Models" property="og:description"/>
     <meta content="https://obvious-research.github.io/onlyflow/" property="og:url"/>
-    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-<!--    <meta content="static/image/your_banner_image.png" property="og:image"/>-->
-    <meta content="1200" property="og:image:width"/>
-    <meta content="630" property="og:image:height"/>
+    <meta content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg" property="og:image"/>
+    <meta content="3209" property="og:image:width"/>
+    <meta content="1895" property="og:image:height"/>
     
     
     <meta content="OnlyFlow" name="twitter:title">
     <meta content="Optical Flow based Motion Conditioning for Video Diffusion Models" name="twitter:description">
-    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-    <meta content="static/images/your_twitter_banner_image.png" name="twitter:image">
+    <meta content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
     <!-- Keywords for your paper to be indexed by-->
     <meta content="OnlyFlow, Video Diffusion Models, optical flow" name="keywords">
@@ -65,7 +63,6 @@
                         <span class="author-block">
                     <a href="https://guillaumejs2403.github.io"
                        target="_blank">Guillaume Jeanneret Sanmiguel</a><sup>2</sup>,</span>
-                        </span>
                         <span class="author-block">
                     <a href="https://cord.isir.upmc.fr" target="_blank">Matthieu Cord</a><sup>2</sup>
                   </span>
@@ -73,16 +70,23 @@
                     
                     <div class="is-size-5 publication-authors">
                         <span class="author-block"><sup>1</sup><a
-                                href="https://obvious-research.com">Obvious Research</a> , <sup>2</sup><a
+                                href="https://www.obvious-art.com/about-us">Obvious Research</a> , <sup>2</sup><a
                                 href="https://www.isir.upmc.fr">ISIR</a> - <a href="https://www.sorbonne-universite.fr/#Sciences">Sorbonne University, Paris</a></span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/html/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.html"
+                               target="_blank">CVPR 2025 Workshops</a>
+                        </span>
                     </div>
                     
                     <div class="column has-text-centered">
                         <div class="publication-links">
-                            <!-- Arxiv PDF link -->
+                            <!-- CVPR Workshops paper link -->
                             <span class="link-block">
                         <a class="external-link button is-normal is-rounded is-dark"
-                           href="https://arxiv.org/pdf/2411.10501.pdf"
+                           href="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/papers/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.pdf"
                            target="_blank">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -91,22 +95,10 @@
                       </a>
                     </span>
                             
-<!--                            &lt;!&ndash; Supplementary PDF link &ndash;&gt;-->
-<!--                            <span class="link-block">-->
-<!--                      <a class="external-link button is-normal is-rounded is-dark"-->
-<!--                         href="static/pdfs/supplementary_material.pdf"-->
-<!--                         target="_blank">-->
-<!--                      <span class="icon">-->
-<!--                        <i class="fas fa-file-pdf"></i>-->
-<!--                      </span>-->
-<!--                      <span>Supplementary</span>-->
-<!--                    </a>-->
-<!--                  </span>-->
-                            
                             <!-- Github link -->
                             <span class="link-block">
                     <a class="external-link button is-normal is-rounded is-dark"
-                       href="https://github.com/obvious-research/OnlyFlow"
+                       href="https://huggingface.co/obvious-research/onlyflow"
                        target="_blank">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -150,7 +142,7 @@
 <section class="hero teaser">
     <div class="container is-max-desktop">
         <div class="hero-body">
-            <video autoplay playsinline height="100%" id="tree" loop muted poster="">
+            <video autoplay playsinline height="100%" loop muted poster="">
                 <!-- Your video here -->
                 <source src="static/videos/banner_video.mp4"
                         type="video/mp4">
@@ -183,7 +175,7 @@
                         quantitative, qualitative and user preference studies to show that OnlyFlow positively compares
                         to state-of-the-art methods on a wide range of tasks, even though OnlyFlow was not specifically
                         trained for such tasks. OnlyFlow thus constitutes a versatile, lightweight yet efficient method
-                        for controlling motion in text-to-video generation. Models and code will be made available on
+                        for controlling motion in text-to-video generation. Models and code are available on
                         GitHub and HuggingFace.
                     </p>
                 </div>
@@ -201,7 +193,7 @@
                 <h2 class="title">Conditioning strength</h2>
                 <p>We can vary the influence of the optical flow conditioning strength for a more similar motion cloning.</p>
             <br>
-                <video autoplay playsinline height="100%" id="tree" loop muted poster="">
+                <video autoplay playsinline height="100%" loop muted poster="">
                     <!-- Your video here -->
                     <source src="static/videos/strength.mov"
                             type="video/mp4">
@@ -220,7 +212,7 @@
             <h2 class="title">Camera control capabilities</h2>
             <p>OnlyFlow can serve as a tool to control camera movement using either another video or a preset motion field (optical flow) corresponding to a specific camera trajectory.</p>
             <br>
-            <video autoplay playsinline height="100%" id="tree" loop muted poster="">
+            <video autoplay playsinline height="100%" loop muted poster="">
                 <!-- Your video here -->
                 <source src="static/videos/camerac_ctrl.mov"
                         type="video/mp4">
@@ -239,7 +231,7 @@
             <h2 class="title">Comparison with other approaches</h2>
             <p>The model exhibits a superior combination of motion fidelity and image realism.</p>
             <br>
-            <video autoplay playsinline height="100%" id="tree" loop muted poster="">
+            <video autoplay playsinline height="100%" loop muted poster="">
                 <!-- Your video here -->
                 <source src="static/videos/comparison.mp4"
                         type="video/mp4">
@@ -258,7 +250,7 @@
             <h2 class="title">Semantic alignment</h2>
             <p>Our model generate a video closely following both the prompt and optical flow</p>
             <br>
-            <video autoplay playsinline height="100%" id="tree" loop muted poster="">
+            <video autoplay playsinline height="100%" loop muted poster="">
                 <!-- Your video here -->
                 <source src="static/videos/semantic_alignment.mov"
                         type="video/mp4">
@@ -295,14 +287,13 @@
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
-        <pre><code>@preprint{koroglu2024onlyflow,
-      title={OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models},
-      author={Mathis Koroglu and Hugo Caselles-Dupré and Guillaume Jeanneret Sanmiguel and Matthieu Cord},
-      year={2024},
-      eprint={2411.10501},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2411.10501},
+        <pre><code>@InProceedings{Koroglu_2025_CVPR,
+    author    = {Koroglu, Mathis and Caselles-Dupr\'e, Hugo and Jeanneret, Guillaume and Cord, Matthieu},
+    title     = {OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2025},
+    pages     = {6280-6290}
 }</code></pre>
     </div>
 </section>
@@ -312,7 +303,7 @@
 <section class="section" id="Acknowledgements">
     <div class="container is-max-desktop content">
         <h2 class="title">Acknowledgements</h2>
-        This project was provided with computing HPC & AI and storage resources by GENCI at IDRIS thanks to the grant 2024-AD011014329R1 on the supercomputer Jean Zay’s V100 & A100 partitions.
+        This project was provided with computing HPC &amp; AI and storage resources by GENCI at IDRIS thanks to the grant 2024-AD011014329R1 on the supercomputer Jean Zay’s V100 &amp; A100 partitions.
     </div>
 </section>
 <!--End Acknowledgements -->
@@ -331,7 +322,7 @@
                         page.
                         You are free to borrow the source code of this website, we just ask that you link back to this
                         page in the footer. <br> This website is licensed under a <a
-                            href="http://creativecommons.org/licenses/by-sa/4.0/"
+                            href="https://creativecommons.org/licenses/by-sa/4.0/"
                             rel="license"
                             target="_blank">Creative
                         Commons Attribution-ShareAlike 4.0 International License</a>.
