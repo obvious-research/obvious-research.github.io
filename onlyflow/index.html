@@ -1,343 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-    <!-- Replace the content tag with appropriate information -->
-    <meta content="OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models" name="description">
-    <meta content="OnlyFlow" property="og:title"/>
-    <meta content="Optical Flow based Motion Conditioning for Video Diffusion Models" property="og:description"/>
-    <meta content="https://obvious-research.github.io/onlyflow/" property="og:url"/>
-    <meta content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg" property="og:image"/>
-    <meta content="3209" property="og:image:width"/>
-    <meta content="1895" property="og:image:height"/>
-    
-    
-    <meta content="OnlyFlow" name="twitter:title">
-    <meta content="Optical Flow based Motion Conditioning for Video Diffusion Models" name="twitter:description">
-    <meta content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg" name="twitter:image">
-    <meta content="summary_large_image" name="twitter:card">
-    <!-- Keywords for your paper to be indexed by-->
-    <meta content="OnlyFlow, Video Diffusion Models, optical flow" name="keywords">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    
-    
-    <title>OnlyFlow</title>
-    <link href="static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-          rel="stylesheet">
-    
-    <link href="static/css/bulma.min.css" rel="stylesheet">
-    <link href="static/css/bulma-carousel.min.css" rel="stylesheet">
-    <link href="static/css/bulma-slider.min.css" rel="stylesheet">
-    <link href="static/css/fontawesome.all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-          rel="stylesheet">
-    <link href="static/css/index.css" rel="stylesheet">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-    <script defer src="static/js/fontawesome.all.min.js"></script>
-    <script src="static/js/bulma-carousel.min.js"></script>
-    <script src="static/js/bulma-slider.min.js"></script>
-    <script src="static/js/index.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models">
+  <meta name="description" content="OnlyFlow conditions video diffusion models on optical flow for versatile camera control, video editing, and motion transfer.">
+  <meta name="keywords" content="OnlyFlow, video diffusion, optical flow, motion control, text-to-video, CVEU 2025, CVPR 2025">
+  <meta name="author" content="Mathis Koroglu, Hugo Caselles-Dupré, Guillaume Jeanneret, Matthieu Cord">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Obvious Research">
+  <meta property="og:title" content="OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models">
+  <meta property="og:description" content="Motion conditioning for video diffusion using the optical flow of an input video.">
+  <meta property="og:url" content="https://obvious-research.github.io/onlyflow/">
+  <meta property="og:image" content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OnlyFlow">
+  <meta name="twitter:description" content="Optical-flow-based motion conditioning for video diffusion models.">
+  <meta name="twitter:image" content="https://obvious-research.github.io/onlyflow/static/images/archi.jpg">
+  <meta name="citation_title" content="OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models">
+  <meta name="citation_author" content="Koroglu, Mathis">
+  <meta name="citation_author" content="Caselles-Dupré, Hugo">
+  <meta name="citation_author" content="Jeanneret, Guillaume">
+  <meta name="citation_author" content="Cord, Matthieu">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="CVEU 2025 Workshop at CVPR">
+  <meta name="citation_pdf_url" content="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/papers/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.pdf">
+  <meta name="theme-color" content="#2563eb">
+  <title>OnlyFlow | Obvious Research</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/project.css">
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models",
+    "datePublished": "2025",
+    "author": [
+      {"@type": "Person", "name": "Mathis Koroglu"},
+      {"@type": "Person", "name": "Hugo Caselles-Dupré"},
+      {"@type": "Person", "name": "Guillaume Jeanneret"},
+      {"@type": "Person", "name": "Matthieu Cord"}
+    ],
+    "url": "https://obvious-research.github.io/onlyflow/",
+    "image": "https://obvious-research.github.io/onlyflow/static/images/archi.jpg",
+    "isAccessibleForFree": true
+  }
+  </script>
 </head>
 <body>
-
-
-<section class="hero">
-    <div class="hero-body">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered">
-                <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title"><u>OnlyFlow</u>: Optical Flow based Motion Conditioning for
-                        Video
-                        Diffusion Models</h1>
-                    <div class="is-size-5 publication-authors">
-                        <!-- Paper authors -->
-                        <span class="author-block">
-                <a href="https://github.com/Arlaz" target="_blank">Mathis Koroglu</a><sup>1</sup>,</span>
-                        <span class="author-block">
-                  <a href="https://sites.google.com/view/hugo-caselles-dupre"
-                     target="_blank">Hugo Caselles-Dupré</a><sup>1</sup>,</span>
-                        <span class="author-block">
-                    <a href="https://guillaumejs2403.github.io"
-                       target="_blank">Guillaume Jeanneret Sanmiguel</a><sup>2</sup>,</span>
-                        <span class="author-block">
-                    <a href="https://cord.isir.upmc.fr" target="_blank">Matthieu Cord</a><sup>2</sup>
-                  </span>
-                    </div>
-                    
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>1</sup><a
-                                href="https://www.obvious-art.com/about-us">Obvious Research</a> , <sup>2</sup><a
-                                href="https://www.isir.upmc.fr">ISIR</a> - <a href="https://www.sorbonne-universite.fr/#Sciences">Sorbonne University, Paris</a></span>
-                    </div>
-
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block">
-                            <a href="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/html/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.html"
-                               target="_blank">CVPR 2025 Workshops</a>
-                        </span>
-                    </div>
-                    
-                    <div class="column has-text-centered">
-                        <div class="publication-links">
-                            <!-- CVPR Workshops paper link -->
-                            <span class="link-block">
-                        <a class="external-link button is-normal is-rounded is-dark"
-                           href="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/papers/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.pdf"
-                           target="_blank">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-                            
-                            <!-- Github link -->
-                            <span class="link-block">
-                    <a class="external-link button is-normal is-rounded is-dark"
-                       href="https://huggingface.co/obvious-research/onlyflow"
-                       target="_blank">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                            
-                            <!-- ArXiv abstract Link -->
-                            <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/2411.10501"
-                     target="_blank">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-                            <!-- HuggingFace link -->
-                            <span class="link-block">
-                    <a class="external-link button is-normal is-rounded is-dark"
-                       href="https://github.com/obvious-research/OnlyFlow"
-                       target="_blank">
-                    <span class="icon">
-                      <object data="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg"
-                              height="30" width="30"> </object>
-                    </span>
-                    <span>HuggingFace</span>
-                  </a>
-                </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View more work from Obvious Research"><i class="fas fa-flask"></i> More Works <i class="fas fa-chevron-down dropdown-arrow"></i></button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header"><h4>More Works from Our Lab</h4><button class="close-btn" onclick="toggleMoreWorks()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+      <div class="works-list">
+        <a href="../frescodiffusion/" class="work-item"><div class="work-info"><h5>FrescoDiffusion</h5><p>Prior-regularized 4K image-to-video generation.</p><span class="work-venue">Project page</span></div><i class="fas fa-arrow-right"></i></a>
+        <a href="../jolt/" class="work-item"><div class="work-info"><h5>JoLT</h5><p>Joint latent trajectories for detailed high-resolution generation.</p><span class="work-venue">Project page</span></div><i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
-</section>
+  </div>
 
+  <main id="main-content">
+    <section class="hero publication-header"><div class="hero-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column has-text-centered">
+      <h1 class="title is-1 publication-title"><span class="onlyflow-wordmark">OnlyFlow</span>: Optical Flow based Motion Conditioning for Video Diffusion Models</h1>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block"><a href="https://github.com/Arlaz" target="_blank" rel="noopener">Mathis Koroglu</a><sup>1</sup>,</span>
+        <span class="author-block"><a href="https://sites.google.com/view/hugo-caselles-dupre" target="_blank" rel="noopener">Hugo Caselles-Dupré</a><sup>1</sup>,</span>
+        <span class="author-block"><a href="https://guillaumejs2403.github.io" target="_blank" rel="noopener">Guillaume Jeanneret</a><sup>2</sup>,</span>
+        <span class="author-block"><a href="https://cord.isir.upmc.fr" target="_blank" rel="noopener">Matthieu Cord</a><sup>2,3</sup></span>
+      </div>
+      <div class="is-size-5 publication-authors"><span class="author-block"><sup>1</sup>Obvious Research &nbsp; <sup>2</sup>ISIR, Sorbonne Université &nbsp; <sup>3</sup>Valeo.ai</span><br><span class="publication-venue">CVEU 2025 Workshop at CVPR</span></div>
+      <div class="column has-text-centered"><div class="publication-links">
+        <span class="link-block"><a href="https://openaccess.thecvf.com/content/CVPR2025W/CVEU/papers/Koroglu_OnlyFlow_Optical_Flow_based_Motion_Conditioning_for_Video_Diffusion_Models_CVPRW_2025_paper.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
+        <span class="link-block"><a href="https://github.com/obvious-research/OnlyFlow" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a></span>
+        <span class="link-block"><a href="https://arxiv.org/abs/2411.10501" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span></a></span>
+        <span class="link-block"><a href="https://huggingface.co/obvious-research/onlyflow" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon">🤗</span><span>Hugging Face</span></a></span>
+      </div></div>
+    </div></div></div></div></section>
 
-<!-- Teaser video-->
-<section class="hero teaser">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <video autoplay playsinline height="100%" loop muted poster="">
-                <!-- Your video here -->
-                <source src="static/videos/banner_video.mp4"
-                        type="video/mp4">
-            </video>
-            <h2 class="subtitle has-text-centered">
-                OnlyFlow controls the generation of video with text and the motion of a video input, using an estimation of its optical flow.
-            </h2>
-        </div>
-    </div>
-</section>
-<!-- End teaser video -->
+    <section class="hero teaser"><div class="container is-max-desktop"><div class="hero-body">
+      <div class="publication-banner"><video autoplay playsinline loop muted preload="metadata"><source src="static/videos/banner_video.mp4" type="video/mp4"></video></div>
+      <h2 class="subtitle has-text-centered">OnlyFlow controls a generated video with a text prompt and the motion extracted from a reference video as optical flow.</h2>
+    </div></div></section>
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-                <h2 class="title is-3">Abstract</h2>
-                <div class="content has-text-justified">
-                    <p>
-                        We consider the problem of text-to-video generation tasks with precise control for various
-                        applications such as camera movement control and video-to-video editing. Most methods tacking
-                        this problem rely on providing user-defined controls, such as binary masks or camera movement
-                        embeddings. In our approach we propose OnlyFlow, an approach leveraging the optical flow firstly
-                        extracted from an input video to condition the motion of generated videos. Using a text prompt
-                        and an input video, OnlyFlow allows the user to generate videos that respect the motion of the
-                        input video as well as the text prompt. This is implemented through an optical flow estimation
-                        model applied on the input video, which is then fed to a trainable optical flow encoder. The
-                        output feature maps are then injected into the text-to-video backbone model. We perform
-                        quantitative, qualitative and user preference studies to show that OnlyFlow positively compares
-                        to state-of-the-art methods on a wide range of tasks, even though OnlyFlow was not specifically
-                        trained for such tasks. OnlyFlow thus constitutes a versatile, lightweight yet efficient method
-                        for controlling motion in text-to-video generation. Models and code are available on
-                        GitHub and HuggingFace.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End paper abstract -->
+    <section class="section hero is-light" id="abstract"><div class="container is-max-desktop"><div class="columns is-centered has-text-centered"><div class="column is-four-fifths">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>We consider text-to-video generation with precise control for applications such as camera movement control and video-to-video editing. Most existing methods rely on user-defined signals such as binary masks or camera embeddings. We propose <strong>OnlyFlow</strong>, an approach that extracts optical flow from an input video and uses it to condition the motion of generated videos.</p>
+        <p>An optical-flow estimator processes the input video, then a trainable encoder produces feature maps injected into the frozen text-to-video backbone. Quantitative, qualitative, and user-preference studies show that OnlyFlow compares favorably with state-of-the-art methods across several tasks, despite not being trained specifically for each one. It offers a versatile, lightweight, and effective form of motion control.</p>
+      </div>
+    </div></div></div></section>
 
+    <section class="section" id="results"><div class="container is-max-desktop publication-body">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <article class="result-block"><h3 class="title is-4">Conditioning strength</h3><p>Adjusting the optical-flow conditioning strength changes how closely the generated motion follows the reference.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/strength.mov" type="video/quicktime"></video><p class="figure-caption">Each row increases γ from 0 to 1 while keeping the prompt and input motion fixed.</p></article>
+      <article class="result-block"><h3 class="title is-4">Camera control capabilities</h3><p>OnlyFlow can drive camera movement using either another video or a preset motion field representing a camera trajectory.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/camerac_ctrl.mov" type="video/quicktime"></video><p class="figure-caption">All videos use the same prompt, pan-left trajectory, and seed. OnlyFlow recovers camera-control behavior without task-specific training.</p></article>
+      <article class="result-block"><h3 class="title is-4">Comparison with other approaches</h3><p>The method balances motion fidelity with image realism.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/comparison.mp4" type="video/mp4"></video><p class="figure-caption">Methods share the same prompt and input video. OnlyFlow compares favorably with depth-conditioned approaches and remains competitive in temporal coherence and image quality.</p></article>
+      <article class="result-block"><h3 class="title is-4">Semantic alignment</h3><p>Generated content follows both the text and the supplied optical flow.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/semantic_alignment.mov" type="video/quicktime"></video><p class="figure-caption">With the prompt “Trees in forest,” the flow of a smile guides the structure of the generated scene.</p></article>
+    </div></section>
 
-<!-- strength video-->
-<section class="hero">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-                <h2 class="title">Conditioning strength</h2>
-                <p>We can vary the influence of the optical flow conditioning strength for a more similar motion cloning.</p>
-            <br>
-                <video autoplay playsinline height="100%" loop muted poster="">
-                    <!-- Your video here -->
-                    <source src="static/videos/strength.mov"
-                            type="video/mp4">
-                </video>
-                <h2 class="subtitle has-text-centered">
-                    Illustration of optical flow conditioning strength impact on generated videos. The videos presented in each row are obtained for increasing values of gamma between 0 and 1.0                </h2>
-        </div>
-    </div>
-</section>
-<!-- End strength video -->
+    <section class="section hero is-light" id="method"><div class="container is-max-desktop publication-body">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <img class="architecture-figure" src="static/images/archi.jpg" alt="OnlyFlow model architecture" loading="lazy">
+      <p class="content has-text-justified figure-caption"><strong>OnlyFlow architecture.</strong> A text prompt, noisy diffusion latents, and the optical flow of a reference video form the inputs. A trainable optical-flow encoder produces feature maps injected into the temporal layers of a frozen video diffusion U-Net, so the output follows both the prompt and the reference motion.</p>
+    </div></section>
 
-<!-- Camera control capabilities video-->
-<section class="hero">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <h2 class="title">Camera control capabilities</h2>
-            <p>OnlyFlow can serve as a tool to control camera movement using either another video or a preset motion field (optical flow) corresponding to a specific camera trajectory.</p>
-            <br>
-            <video autoplay playsinline height="100%" loop muted poster="">
-                <!-- Your video here -->
-                <source src="static/videos/camerac_ctrl.mov"
-                        type="video/mp4">
-            </video>
-            <h2 class="subtitle has-text-centered">
-                All videos are generated using the same text prompt, camera trajectory (pan-left), and seed. Without having trained for this task, our model achieve the same camera control capability as other camera-movement approaches trained on this task.            </h2>
-        </div>
-    </div>
-</section>
-<!-- End Camera control capabilities video -->
+    <section class="section" id="BibTeX"><div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()" aria-label="Copy OnlyFlow BibTeX citation to clipboard"><i class="fas fa-copy"></i> <span class="copy-text">Copy BibTeX</span></button><pre><code id="bibtex-code">@inproceedings{koroglu2025onlyflow,
+  author    = {Koroglu, Mathis and Caselles-Dupr\'e, Hugo and Jeanneret, Guillaume and Cord, Matthieu},
+  title     = {OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models},
+  booktitle = {CVEU 2025 Workshop at CVPR},
+  year      = {2025},
+  pages     = {6280--6290}
+}</code></pre></div>
+    </div></section>
 
-<!-- comparison video-->
-<section class="hero">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <h2 class="title">Comparison with other approaches</h2>
-            <p>The model exhibits a superior combination of motion fidelity and image realism.</p>
-            <br>
-            <video autoplay playsinline height="100%" loop muted poster="">
-                <!-- Your video here -->
-                <source src="static/videos/comparison.mp4"
-                        type="video/mp4">
-            </video>
-            <h2 class="subtitle has-text-centered">
-                Examples videos are generated using same text prompt and input video. It positively compares to approaches that uses depth map (RAVE, VideoComposer, Control-A-Video), is comparable to Gen-1's temporal coherence and VideoComposer's image quality.            </h2>
-        </div>
-    </div>
-</section>
-<!-- End comparison video -->
+    <section class="section hero is-light" id="acknowledgements"><div class="container is-max-desktop content">
+      <h2 class="title is-3">Acknowledgements</h2>
+      <p>This work has been partially supported by the VISA DEEP chair (grant ANR-20-CHIA-0022), the PostGenAI@Paris cluster (grant ANR-23-IACL-0007; France 2030), and funded by the French National Research Agency (ANR) under the Renaissance project (grant ANR-23-CE23-0023; France 2030).</p>
+      <p>This project was provided with computing HPC &amp; AI and storage resources by GENCI at IDRIS thanks to grant 2024-AD011014329R1 on the supercomputer Jean Zay’s V100 &amp; A100 partitions.</p>
+    </div></section>
+  </main>
 
-<!-- semantic_alignment video-->
-<section class="hero">
-    <div class="container is-max-desktop">
-        <div class="hero-body">
-            <h2 class="title">Semantic alignment</h2>
-            <p>Our model generate a video closely following both the prompt and optical flow</p>
-            <br>
-            <video autoplay playsinline height="100%" loop muted poster="">
-                <!-- Your video here -->
-                <source src="static/videos/semantic_alignment.mov"
-                        type="video/mp4">
-            </video>
-            <h2 class="subtitle has-text-centered">
-                With the prompt "Trees in forest", our model generates a clothesline corresponding to the teeth of the smile.</h2>
-        </div>
-    </div>
-</section>
-<!-- End semantic_alignment video -->
-
-<!-- Model architecture overview-->
-<section class="hero ">
-    <div class="hero-body">
-        <div class="container">
-            <h2 class="title">OnlyFlow model architecture</h2>
-                    <!-- Your image here -->
-            <div style="text-align: center;">
-                <img src="static/images/archi.jpg" alt="OnlyFlow model architecture" width="65%" height="65%">
-            </div>
-                    <h2 class="subtitle has-text-centered">
-                        Overview of OnlyFlow. Inputs are i) a tokenized and encoded text prompt, ii) noisy latents for the diffusion model and iii) the
-                        optical flow of an input video. The latter is fed through a trainable optical flow encoder which outputs features maps that are injected in the
-                        diffusion U-Net. We experiment with several injection strategies, for illustration purposes we only show the injection in temporal attention
-                        layers of the U-Net. The U-Net is kept frozen during training. The output generated video matches the prompt and the auxiliary video’s
-                        motion.
-                    </h2>
-        </div>
-    </div>
-</section>
-<!-- End model architecture overview-->
-
-<!--BibTex citation -->
-<section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@InProceedings{Koroglu_2025_CVPR,
-    author    = {Koroglu, Mathis and Caselles-Dupr\'e, Hugo and Jeanneret, Guillaume and Cord, Matthieu},
-    title     = {OnlyFlow: Optical Flow based Motion Conditioning for Video Diffusion Models},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-    month     = {June},
-    year      = {2025},
-    pages     = {6280-6290}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-<!--Acknowledgements -->
-<section class="section" id="Acknowledgements">
-    <div class="container is-max-desktop content">
-        <h2 class="title">Acknowledgements</h2>
-        This project was provided with computing HPC &amp; AI and storage resources by GENCI at IDRIS thanks to the grant 2024-AD011014329R1 on the supercomputer Jean Zay’s V100 &amp; A100 partitions.
-    </div>
-</section>
-<!--End Acknowledgements -->
-
-
-<footer class="footer">
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-8">
-                <div class="content">
-                    <p>
-                        This page was built using the <a
-                            href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic
-                        Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io"
-                                                                                target="_blank">Nerfies</a> project
-                        page.
-                        You are free to borrow the source code of this website, we just ask that you link back to this
-                        page in the footer. <br> This website is licensed under a <a
-                            href="https://creativecommons.org/licenses/by-sa/4.0/"
-                            rel="license"
-                            target="_blank">Creative
-                        Commons Attribution-ShareAlike 4.0 International License</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-<!-- End of Statcounter Code -->
-
+  <footer class="footer"><div class="container"><div class="columns is-centered"><div class="column is-8"><div class="content has-text-centered"><p>This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>, adopted from <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.</p></div></div></div></div></footer>
 </body>
 </html>

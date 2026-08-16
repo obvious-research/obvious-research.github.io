@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation">
+  <meta name="description" content="JoLT jointly denoises low- and high-resolution latent trajectories for training-free, controllable, densely detailed image generation at 4096² and beyond.">
+  <meta name="keywords" content="JoLT, high-resolution image generation, tiled diffusion, FLUX.2, joint latent trajectories, text-to-image">
+  <meta name="author" content="Mathis Koroglu, Guillaume Jeanneret, Hugo Caselles-Dupré, Matthieu Cord, Arnaud Dapogny">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Obvious Research">
+  <meta property="og:title" content="JoLT: Joint Latent Trajectories">
+  <meta property="og:description" content="Context-guided high-resolution tiled generation with coupled low- and high-resolution denoising trajectories.">
+  <meta property="og:url" content="https://obvious-research.github.io/jolt/">
+  <meta property="og:image" content="https://obvious-research.github.io/jolt/static/images/main/jolt_refined_output_4096.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JoLT: Joint Latent Trajectories">
+  <meta name="twitter:description" content="Controllable, densely detailed image generation at 4096² and beyond.">
+  <meta name="twitter:image" content="https://obvious-research.github.io/jolt/static/images/main/jolt_refined_output_4096.jpg">
+  <meta name="citation_title" content="JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation">
+  <meta name="citation_author" content="Koroglu, Mathis">
+  <meta name="citation_author" content="Jeanneret, Guillaume">
+  <meta name="citation_author" content="Caselles-Dupré, Hugo">
+  <meta name="citation_author" content="Cord, Matthieu">
+  <meta name="citation_author" content="Dapogny, Arnaud">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="https://obvious-research.github.io/jolt/static/pdfs/jolt.pdf">
+  <meta name="theme-color" content="#2563eb">
+  <title>JoLT | Obvious Research</title>
+  <link rel="icon" type="image/jpeg" href="static/images/main/jolt_refined_output_4096.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/project.css">
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/magnifier.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation",
+    "datePublished": "2026",
+    "author": [
+      {"@type": "Person", "name": "Mathis Koroglu"},
+      {"@type": "Person", "name": "Guillaume Jeanneret"},
+      {"@type": "Person", "name": "Hugo Caselles-Dupré"},
+      {"@type": "Person", "name": "Matthieu Cord"},
+      {"@type": "Person", "name": "Arnaud Dapogny"}
+    ],
+    "url": "https://obvious-research.github.io/jolt/",
+    "image": "https://obvious-research.github.io/jolt/static/images/main/jolt_refined_output_4096.jpg",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View more work from Obvious Research"><i class="fas fa-flask"></i> More Works <i class="fas fa-chevron-down dropdown-arrow"></i></button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header"><h4>More Works from Our Lab</h4><button class="close-btn" onclick="toggleMoreWorks()" aria-label="Close"><i class="fas fa-times"></i></button></div>
+      <div class="works-list">
+        <a href="../frescodiffusion/" class="work-item"><div class="work-info"><h5>FrescoDiffusion</h5><p>Prior-regularized 4K image-to-video generation.</p><span class="work-venue">Project page</span></div><i class="fas fa-arrow-right"></i></a>
+        <a href="../onlyflow/" class="work-item"><div class="work-info"><h5>OnlyFlow</h5><p>Optical-flow motion conditioning for video diffusion.</p><span class="work-venue">CVPR Workshops 2025</span></div><i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="hero publication-header"><div class="hero-body"><div class="container is-max-desktop"><div class="columns is-centered"><div class="column has-text-centered">
+      <h1 class="title is-1 publication-title"><span class="jolt-wordmark">JoLT</span>: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation</h1>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block"><a href="https://github.com/Arlaz" target="_blank" rel="noopener">Mathis Koroglu</a><sup>1,2</sup>,</span>
+        <span class="author-block"><a href="https://guillaumejs2403.github.io" target="_blank" rel="noopener">Guillaume Jeanneret</a><sup>2</sup>,</span>
+        <span class="author-block"><a href="https://sites.google.com/view/hugo-caselles-dupre" target="_blank" rel="noopener">Hugo Caselles-Dupré</a><sup>1</sup>,</span>
+        <span class="author-block"><a href="https://cord.isir.upmc.fr" target="_blank" rel="noopener">Matthieu Cord</a><sup>2,3</sup>,</span>
+        <span class="author-block">Arnaud Dapogny<sup>2</sup></span>
+      </div>
+      <div class="is-size-5 publication-authors"><span class="author-block"><sup>1</sup>Obvious Research &nbsp; <sup>2</sup>Sorbonne Université, CNRS, ISIR &nbsp; <sup>3</sup>Valeo.ai</span></div>
+      <div class="column has-text-centered"><div class="publication-links">
+        <span class="link-block"><a href="static/pdfs/jolt.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
+      </div></div>
+    </div></div></div></div></section>
+
+    <section class="section teaser-section"><div class="container wide-container publication-body">
+      <div class="main-figure-shell">
+        <div class="control-panel">
+          <span class="control-kicker">Controls</span>
+          <div><strong>Master prompt</strong><p>A soaring painted dome of swirling angels ascending into golden light, dramatic foreshortening, luminous Baroque ceiling fresco.</p></div>
+          <div><strong>Detail prompt</strong><p>Enhance image, add details.</p></div>
+          <div><strong>Complexity</strong><p>α ∈ [0, 1]</p></div>
+        </div>
+        <div class="main-comparison zoom-group" aria-label="Comparison between the base model and JoLT">
+          <figure><div class="zoom-source"><img src="static/images/main/base_generation_flux2_klein_9b_2048.jpg" alt="FLUX.2 Klein-9B base generation at 2048 square pixels"></div><figcaption><strong>FLUX.2 Klein-9B</strong><span>2048² px</span></figcaption></figure>
+          <figure class="ours"><div class="zoom-source"><img src="static/images/main/jolt_refined_output_4096.jpg" alt="JoLT refined generation at 4096 square pixels"></div><figcaption><strong>JoLT (ours)</strong><span>4096² px</span></figcaption></figure>
+        </div>
+      </div>
+      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to magnify the same location in both views.</p>
+      <p class="content has-text-centered main-caption"><strong>Controllable high-resolution generation.</strong> The master prompt establishes the scene; the detail prompt and feedback strength α control local density and style while JoLT preserves a coherent global composition.</p>
+      <p class="setup-note"><strong>Figure 1 setup.</strong> FLUX.2 Klein-9B, four denoising steps, and a fixed seed. The base view is generated at 2048². JoLT produces 4096² with 1024² high-resolution windows, 512 px stride, and α = 0.25.</p>
+    </div></section>
+
+    <section class="section hero is-light" id="abstract"><div class="container is-max-desktop"><div class="columns is-centered has-text-centered"><div class="column is-four-fifths">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>Text-to-image models produce impressive results but still struggle with densely detailed high-resolution images. Existing methods usually generate a low-resolution image first, then upscale or refine it, so high-resolution information cannot influence the global composition as it forms.</p>
+        <p>We introduce <strong>Joint Latent Trajectories (JoLT)</strong>, a training-free, two-stream generator that jointly denoises low- and high-resolution latent images at each sampling step. The low-resolution trajectory controls overall layout; the tiled high-resolution trajectory adds local detail. Bidirectional exchange keeps both streams synchronized and exposes two direct creative controls: a detail prompt and feedback strength α. The resulting 4096² images are richly detailed while remaining globally coherent.</p>
+      </div>
+    </div></div></div></section>
+
+    <section class="section" id="method"><div class="container wide-container publication-body">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <p class="section-lede method-lede">JoLT keeps a global trajectory and a tiled detail trajectory alive together. At every denoising step, each stream updates the other before sampling continues.</p>
+      <figure class="paper-method-figure">
+        <img src="static/images/method/method-overview.png" alt="JoLT paper method diagram showing initialization, the low-resolution stream, joint prior, high-resolution stream, and bidirectional conditioning" loading="lazy">
+        <figcaption><strong>The complete JoLT pipeline from the paper.</strong> A shared Gaussian draw initializes both trajectories. The LR stream denoises the global composition from the master prompt; its clean estimate is decoded, upsampled, and re-encoded as the joint prior for tiled HR denoising. The HR canvas is then randomly subsampled and blended into the next LR update with weight α.</figcaption>
+      </figure>
+      <p class="setup-note"><strong>Method setup.</strong> FLUX.2 Klein-9B distilled to four sampling steps. Unless stated otherwise: 4096² canvas, 1024² tiled denoising windows, 512 px stride (50% overlap), 1024² LR stream, and constant α = 0.25.</p>
+    </div></section>
+
+    <section class="section hero is-light" id="qualitative"><div class="container gallery-container publication-body">
+      <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
+      <p class="section-lede">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, then move the cursor over any image to inspect the same normalized crop across the row.</p>
+      <div class="method-header"><span>JoLT (ours)</span><span>DemoFusion</span><span>ResDiT</span><span>SEGA</span></div>
+
+      <div class="research-carousel qualitative-carousel" data-carousel aria-label="Qualitative comparison examples">
+      <div class="carousel-viewport">
+      <article class="qual-row zoom-group is-active" data-carousel-slide role="group" aria-label="Example 1 of 6"><h3>Example 1</h3><p class="example-prompt"><span>Prompt</span>Viewed from a cliff, a coastal monastery combines windsurfing sails, antique typewriters, olive groves, and satellite dishes into one functioning landscape; sailcloth shades the writing terraces, typewriter keys map the planting grid, and dishes pivot in rhythm with the wind-bent trees.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_1_ours.jpg" alt="JoLT result for qualitative example 1" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_1_demofusion.jpg" alt="DemoFusion result for qualitative example 1" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_1_resdit.jpg" alt="ResDiT result for qualitative example 1" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_1_sega.jpg" alt="SEGA result for qualitative example 1" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      <article class="qual-row zoom-group" data-carousel-slide role="group" aria-label="Example 2 of 6"><h3>Example 2</h3><p class="example-prompt"><span>Prompt</span>A mountain tunnel becomes an indoor orchard with brass elevators, paper lanterns, weather maps, and sleeping bears; elevators transport fruit, lanterns indicate temperature zones, and map contours guide the planting beds.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_2_ours.jpg" alt="JoLT result for qualitative example 2" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_2_demofusion.jpg" alt="DemoFusion result for qualitative example 2" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_2_resdit.jpg" alt="ResDiT result for qualitative example 2" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_2_sega.jpg" alt="SEGA result for qualitative example 2" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      <article class="qual-row zoom-group" data-carousel-slide role="group" aria-label="Example 3 of 6"><h3>Example 3</h3><p class="example-prompt"><span>Prompt</span>A desert palace kitchen contains a miniature airport assembled from spice racks, silk banners, aquarium pumps, and white rabbits; racks form terminals, banners serve as windsocks, and rabbits move luggage through pump-cooled tunnels.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_3_ours.jpg" alt="JoLT result for qualitative example 3" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_3_demofusion.jpg" alt="DemoFusion result for qualitative example 3" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_3_resdit.jpg" alt="ResDiT result for qualitative example 3" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_3_sega.jpg" alt="SEGA result for qualitative example 3" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      <article class="qual-row zoom-group" data-carousel-slide role="group" aria-label="Example 4 of 6"><h3>Example 4</h3><p class="example-prompt"><span>Prompt</span>A desert clinic is built around a ceremonial fountain with x-ray plates, wind chimes, climbing roses, and bicycle wheels; plates shade the patients, wheels pump water, and chimes ring as roses turn in the breeze.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_4_ours.jpg" alt="JoLT result for qualitative example 4" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_4_demofusion.jpg" alt="DemoFusion result for qualitative example 4" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_4_resdit.jpg" alt="ResDiT result for qualitative example 4" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_4_sega.jpg" alt="SEGA result for qualitative example 4" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      <article class="qual-row zoom-group" data-carousel-slide role="group" aria-label="Example 5 of 6"><h3>Example 5</h3><p class="example-prompt"><span>Prompt</span>A broad river delta is surveyed using cathedral clocks, inflatable animals, archival boxes, and sunflower fields; clocks regulate the opening of irrigation gates, inflatable forms act as floating markers, and boxes store maps aligned with the flower rows.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_5_ours.jpg" alt="JoLT result for qualitative example 5" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_5_demofusion.jpg" alt="DemoFusion result for qualitative example 5" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_5_resdit.jpg" alt="ResDiT result for qualitative example 5" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_5_sega.jpg" alt="SEGA result for qualitative example 5" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      <article class="qual-row zoom-group" data-carousel-slide role="group" aria-label="Example 6 of 6"><h3>Example 6</h3><p class="example-prompt"><span>Prompt</span>A riverside hospital garden contains a locomotive boiler, stained-glass screens, bamboo flutes, and grazing alpacas; the boiler heats the paths, screens filter the steam, and flutes sound when alpacas cross hidden valves.</p><div class="qual-grid">
+        <figure class="ours"><div class="zoom-source"><img src="static/images/qualitative/supplement_6_ours.jpg" alt="JoLT result for qualitative example 6" loading="lazy"></div><figcaption>JoLT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_6_demofusion.jpg" alt="DemoFusion result for qualitative example 6" loading="lazy"></div><figcaption>DemoFusion</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_6_resdit.jpg" alt="ResDiT result for qualitative example 6" loading="lazy"></div><figcaption>ResDiT</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/qualitative/supplement_6_sega.jpg" alt="SEGA result for qualitative example 6" loading="lazy"></div><figcaption>SEGA</figcaption></figure>
+      </div></article>
+      </div>
+      <div class="carousel-controls">
+        <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Show previous qualitative example"><i class="fas fa-arrow-left"></i><span>Previous</span></button>
+        <span class="carousel-status" data-carousel-status aria-live="polite">1 / 6</span>
+        <button type="button" class="carousel-arrow" data-carousel-next aria-label="Show next qualitative example"><span>Next</span><i class="fas fa-arrow-right"></i></button>
+      </div>
+      </div>
+      <p class="setup-note"><strong>Comparison setup.</strong> Every method uses FLUX.2 Klein-9B with four denoising steps and the same evaluation prompt. Outputs are 4096². JoLT uses joint-prior conditioning, MultiDiffusion aggregation, 1024² windows with 512 px stride, and α = 0.25.</p>
+    </div></section>
+
+    <section class="section" id="alpha"><div class="container gallery-container publication-body">
+      <h2 class="title is-3 has-text-centered">Controlling Complexity with α</h2>
+      <p class="section-lede">A single feedback strength controls how strongly the evolving high-resolution canvas influences the low-resolution trajectory.</p>
+      <p class="example-prompt section-prompt"><span>Prompt</span>An aerial view reveals a flooded suburb reorganized by violin bridges, rice paddies, meteorological balloons, and concrete playground slides; the bridges guide boats between houses, paddies occupy former streets, and balloon shadows curve across the slides and water as a shared directional system.</p>
+      <div class="alpha-grid zoom-group">
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0.jpg" alt="JoLT output with alpha 0" loading="lazy"></div><figcaption>α = 0</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p25.jpg" alt="JoLT output with alpha 0.25" loading="lazy"></div><figcaption>α = 0.25</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p50.jpg" alt="JoLT output with alpha 0.5" loading="lazy"></div><figcaption>α = 0.50</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p75.jpg" alt="JoLT output with alpha 0.75" loading="lazy"></div><figcaption>α = 0.75</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_1p0.jpg" alt="JoLT output with alpha 1" loading="lazy"></div><figcaption>α = 1.0</figcaption></figure>
+      </div>
+      <div class="complexity-arrow" aria-label="Complexity increases from left to right"><span>Complexity increases</span></div>
+      <p class="content has-text-centered main-caption">Higher α progressively increases visible texture and local structure. α = 0.25 is the conservative default used in the main comparisons.</p>
+      <p class="setup-note"><strong>α sweep setup.</strong> FLUX.2 Klein-9B, four steps, 4096² output, 1024² windows, 512 px stride. The prompt, seed, detail prompt, and all sampling parameters are fixed; only constant α varies from 0 to 1.</p>
+    </div></section>
+
+    <section class="section hero is-light" id="detail-prompts"><div class="container gallery-container publication-body">
+      <h2 class="title is-3 has-text-centered">Detail-Prompt Control</h2>
+      <p class="section-lede">The global scene remains fixed while a second prompt changes how local content is rendered.</p>
+      <p class="example-prompt section-prompt"><span>Master prompt</span>A flooded hotel atrium contains a functioning print shop with reed boats, mechanical clocks, stained-glass fish, and citrus trees; boats carry paper, clocks drive the presses, and fish-shaped light moves across the leaves.</p>
+      <div class="prompt-grid zoom-group">
+        <figure><div class="zoom-source"><img src="static/images/prompts/enhance_details.jpg" alt="JoLT generation using an enhance details prompt" loading="lazy"></div><figcaption>“Enhance the image, add lots of details”</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/prompts/pointillist.jpg" alt="JoLT generation in pointillist style" loading="lazy"></div><figcaption>“Pointillist style”</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/prompts/iridescent_caustic.jpg" alt="JoLT generation with iridescent caustic reflections" loading="lazy"></div><figcaption>“Add iridescent caustic light reflections”</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/prompts/bosch.jpg" alt="JoLT generation with intricate grotesque imagery" loading="lazy"></div><figcaption>“Intricate grotesque imagery”</figcaption></figure>
+      </div>
+      <p class="setup-note"><strong>Detail-prompt setup.</strong> FLUX.2 Klein-9B, four steps, 4096² output, 1024² windows, 512 px stride, and α = 0.25. The master prompt, seed, and sampling parameters are identical in all four images; only the detail prompt changes.</p>
+    </div></section>
+
+    <section class="section" id="BibTeX"><div class="container is-max-desktop content">
+      <h2 class="title is-3">BibTeX</h2>
+      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre><code id="bibtex-code">@article{koroglu2026jolt,
+  title  = {JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation},
+  author = {Koroglu, Mathis and Jeanneret, Guillaume and Caselles-Dupr\'e, Hugo and Cord, Matthieu and Dapogny, Arnaud},
+      year   = {2026}
+}</code></pre></div>
+    </div></section>
+
+    <section class="section hero is-light" id="acknowledgements"><div class="container is-max-desktop content">
+      <h2 class="title is-3">Acknowledgements</h2>
+      <p>This work has been partially supported by the VISA DEEP chair (grant ANR-20-CHIA-0022), the PostGenAI@Paris cluster (grant ANR-23-IACL-0007; France 2030), and funded by the French National Research Agency (ANR) under the Renaissance project (grant ANR-23-CE23-0023; France 2030).</p>
+      <p>This project was provided with computing HPC &amp; AI and storage resources by GENCI at IDRIS thanks to grant 2025-AD011017131 on the supercomputer Jean Zay’s H100 partition.</p>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="container"><div class="columns is-centered"><div class="column is-8"><div class="content has-text-centered"><p>This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>, adopted from <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.</p></div></div></div></div></footer>
+</body>
+</html>
