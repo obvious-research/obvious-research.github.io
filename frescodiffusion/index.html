@@ -80,7 +80,7 @@
           <span class="author-block">Arnaud Dapogny<sup>2</sup>,</span>
           <span class="author-block"><a href="https://cord.isir.upmc.fr" target="_blank" rel="noopener">Matthieu Cord</a><sup>2,3</sup></span>
         </div>
-        <div class="is-size-5 publication-authors"><span class="author-block"><sup>1</sup>Obvious Research &nbsp; <sup>2</sup>Sorbonne Université, CNRS, ISIR &nbsp; <sup>3</sup>Valeo.ai</span><span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution</small></span></div>
+        <div class="is-size-5 publication-authors"><span class="author-block"><a href="https://obvious-research.github.io/" target="_blank" rel="noopener"><sup>1</sup>Obvious Research</a> &nbsp; <a href="https://www.isir.upmc.fr/isir/?lang=en" target="_blank" rel="noopener"><sup>2</sup>Sorbonne Université, CNRS, ISIR</a> &nbsp; <a href="https://valeoai.github.io/" target="_blank" rel="noopener"><sup>3</sup>Valeo.ai</a></span><span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution</small></span></div>
         <div class="column has-text-centered"><div class="publication-links">
           <span class="link-block"><a href="static/pdfs/frescodiffusion.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
           <span class="link-block"><a href="https://huggingface.co/datasets/obvious-research/FrescoArchive" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon">🤗</span><span>FrescoArchive</span></a></span>
@@ -92,6 +92,7 @@
       <div class="publication-banner fresco-banner">
         <div class="video-panzoom" data-video-panzoom tabindex="0" aria-label="Zoomable and draggable FrescoDiffusion animation" aria-describedby="hero-video-help">
           <video autoplay loop muted playsinline preload="metadata" draggable="false" aria-label="FrescoDiffusion animation of the Sistine Chapel fresco"><source src="sistine.mp4" type="video/mp4"></video>
+          <div class="video-panzoom-drag-surface" data-video-drag-surface aria-hidden="true"></div>
           <div class="video-zoom-controls" role="group" aria-label="Video zoom controls">
             <button type="button" data-video-zoom-out aria-label="Zoom out" title="Zoom out"><i class="fas fa-search-minus" aria-hidden="true"></i></button>
             <span data-video-zoom-status aria-live="polite">100%</span>
@@ -140,12 +141,11 @@
 
     <section class="section" id="comparisons"><div class="container comparison-container publication-body">
       <h2 class="title is-3 has-text-centered">Qualitative Comparisons</h2>
-      <p class="has-text-centered comparison-intro">Each slide uses the same source image and prompt. Browse with the arrows; hover any video to reveal pause, seek, volume, and fullscreen controls.</p>
-      <div class="method-key" aria-label="Comparison methods"><span>FrescoDiffusion (ours)</span><span>MultiDiffusion</span><span>DynamicScaler</span><span>DemoFusion</span><span>Wan native</span><span>Wan + VSR</span></div>
+      <p class="has-text-centered comparison-intro">Each slide uses the same source image and prompt. The six methods are arranged over multiple rows for larger, easier-to-read videos. Browse with the arrows; hover any video to reveal pause, seek, volume, and fullscreen controls.</p>
 
       <div class="research-carousel comparison-carousel" data-carousel aria-label="FrescoDiffusion qualitative comparison scenes">
       <div class="carousel-viewport">
-      <article class="comparison-example is-active" data-carousel-slide role="group" aria-label="Classical fresco, slide 1 of 4"><div class="comparison-heading"><h3 class="title is-5">Classical fresco</h3><span>2182 × 2770 px</span></div><div class="video-comparison-grid">
+      <article class="comparison-example is-active" data-carousel-slide role="group" aria-label="Classical fresco, slide 1 of 4"><div class="comparison-heading"><h3 class="title is-5">Classical fresco</h3><span>2182 × 2770 px</span></div><div class="video-comparison-grid comparison-grid--two-rows">
         <figure class="featured"><video controls muted loop playsinline preload="metadata"><source src="f2v/00361771_MD_LT_2182x2770_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>FrescoDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_md/00361771_MD_LT_2182x2770_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>MultiDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="dynamicscaler/00361771_GMG_MD_2182x2770_win480x832_ov25_ns1.0.mp4" type="video/mp4"></video><figcaption>DynamicScaler</figcaption></figure>
@@ -154,7 +154,7 @@
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_vsr/00361771_baseline_560x704.mp4" type="video/mp4"></video><figcaption>Wan + VSR</figcaption></figure>
       </div></article>
 
-      <article class="comparison-example" data-carousel-slide role="group" aria-label="Panoramic composition, slide 2 of 4"><div class="comparison-heading"><h3 class="title is-5">Panoramic composition</h3><span>892 × 3000 px</span></div><div class="video-comparison-grid">
+      <article class="comparison-example" data-carousel-slide role="group" aria-label="Panoramic composition, slide 2 of 4"><div class="comparison-heading"><h3 class="title is-5">Panoramic composition</h3><span>892 × 3000 px</span></div><div class="video-comparison-grid comparison-grid--three-rows">
         <figure class="featured"><video controls muted loop playsinline preload="metadata"><source src="f2v/00371667_MD_LT_892x3000_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>FrescoDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_md/00371667_MD_LT_892x3000_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>MultiDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="dynamicscaler/00371667_GMG_MD_892x3000_win480x832_ov25_ns1.0.mp4" type="video/mp4"></video><figcaption>DynamicScaler</figcaption></figure>
@@ -163,7 +163,7 @@
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_vsr/00371667_baseline_336x1152.mp4" type="video/mp4"></video><figcaption>Wan + VSR</figcaption></figure>
       </div></article>
 
-      <article class="comparison-example" data-carousel-slide role="group" aria-label="Historical painting, slide 3 of 4"><div class="comparison-heading"><h3 class="title is-5">Historical painting</h3><span>1517 × 2300 px</span></div><div class="video-comparison-grid">
+      <article class="comparison-example" data-carousel-slide role="group" aria-label="Historical painting, slide 3 of 4"><div class="comparison-heading"><h3 class="title is-5">Historical painting</h3><span>1517 × 2300 px</span></div><div class="video-comparison-grid comparison-grid--two-rows">
         <figure class="featured"><video controls muted loop playsinline preload="metadata"><source src="f2v/00031686_MD_LT_1517x2300_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>FrescoDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_md/00031686_MD_LT_1517x2300_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>MultiDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="dynamicscaler/00031686_GMG_MD_1517x2300_win480x832_ov25_ns1.0.mp4" type="video/mp4"></video><figcaption>DynamicScaler</figcaption></figure>
@@ -172,7 +172,7 @@
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_vsr/00031686_baseline_512x768.mp4" type="video/mp4"></video><figcaption>Wan + VSR</figcaption></figure>
       </div></article>
 
-      <article class="comparison-example" data-carousel-slide role="group" aria-label="Complex square composition, slide 4 of 4"><div class="comparison-heading"><h3 class="title is-5">Complex square composition</h3><span>2048 × 2048 px</span></div><div class="video-comparison-grid">
+      <article class="comparison-example" data-carousel-slide role="group" aria-label="Complex square composition, slide 4 of 4"><div class="comparison-heading"><h3 class="title is-5">Complex square composition</h3><span>2048 × 2048 px</span></div><div class="video-comparison-grid comparison-grid--two-rows">
         <figure class="featured"><video controls muted loop playsinline preload="metadata"><source src="f2v/00151595_MD_LT_2048x2048_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>FrescoDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="wan_md/00151595_MD_LT_2048x2048_win480x832_ov30.mp4" type="video/mp4"></video><figcaption>MultiDiffusion</figcaption></figure>
         <figure><video controls muted loop playsinline preload="metadata"><source src="dynamicscaler/00151595_GMG_MD_2048x2048_win480x832_ov25_ns1.0.mp4" type="video/mp4"></video><figcaption>DynamicScaler</figcaption></figure>
@@ -191,36 +191,55 @@
 
     <section class="section hero is-light" id="controls"><div class="container is-max-desktop publication-body">
       <h2 class="title is-3 has-text-centered">Controlling the Prior</h2>
-      <p class="comparison-intro has-text-centered">The paper denotes prior strength with λ. With the source image, prompt, seed, and tiled sampler fixed, increasing λ trades free local motion for stronger agreement with the global video prior.</p>
+      <p class="comparison-intro has-text-centered">The paper denotes prior strength with λ. With the source image, prompt, seed, and tiled sampler fixed, these three points show the progression from free tiled denoising toward the global video prior.</p>
       <div class="parameter-comparison">
         <figure>
           <video autoplay muted loop playsinline preload="metadata" aria-label="Generation with prior strength lambda equal to zero"><source src="wan_md/00361771_MD_LT_2182x2770_win480x832_ov30.mp4" type="video/mp4"></video>
           <figcaption><strong>λ = 0</strong><span>Pure tiled denoising · more local creativity</span></figcaption>
         </figure>
-        <div class="parameter-arrow" aria-hidden="true"><span>Stronger prior</span><i class="fas fa-arrow-right"></i></div>
         <figure class="featured">
           <video autoplay muted loop playsinline preload="metadata" aria-label="Generation with prior strength lambda equal to one"><source src="f2v/00361771_MD_LT_2182x2770_win480x832_ov30.mp4" type="video/mp4"></video>
           <figcaption><strong>λ = 1</strong><span>FrescoDiffusion · stronger global coherence</span></figcaption>
         </figure>
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Native-resolution prior video, the limiting target as lambda increases"><source src="wan_solo/00361771_baseline_560x704.mp4" type="video/mp4"></video>
+          <figcaption><strong>λ → ∞</strong><span>Native prior · limiting target</span></figcaption>
+        </figure>
       </div>
-      <p class="setup-note"><strong>Matched λ comparison.</strong> Both videos animate the same classical fresco with the same prompt, seed, resolution, window size, overlap, and sampling settings. Only prior regularization changes.</p>
+      <div class="parameter-arrow" aria-label="Prior influence increases from left to right"><span>Prior influence increases</span><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+      <p class="setup-note"><strong>Prior-strength progression.</strong> λ = 0 and λ = 1 are matched high-resolution generations of the same classical fresco. The third video is the native-resolution prior itself: the limiting target approached as λ increases, rather than an additional high-resolution run.</p>
     </div></section>
 
     <section class="section" id="regional"><div class="container comparison-container publication-body">
       <h2 class="title is-3 has-text-centered">Regional vs. Global Regularization</h2>
-      <p class="comparison-intro has-text-centered">At the same λ = 1, R-FrescoDiffusion applies the prior more strongly to static background regions while preserving greater freedom in the activity mask.</p>
-      <figure class="regional-comparison">
-        <img src="static/images/regional-comparison.png" alt="Matched comparison of FrescoDiffusion and regional FrescoDiffusion at lambda equal to one, with highlighted background and foreground crops" loading="lazy">
-        <figcaption>The regional variant better preserves background structure while allowing motion and new details inside active foreground regions. The red and blue boxes show matched background and foreground crops.</figcaption>
-      </figure>
+      <p class="comparison-intro has-text-centered">This is the exact River Thames and St. Paul’s example used in the paper. Both videos start from the same artwork and use λ = 1.5, making the effect of the regional schedule directly comparable.</p>
+      <div class="regional-comparison" aria-label="Matched source, global regularization, and regional regularization comparison">
+        <figure>
+          <img src="regional/00171768-source.jpg" alt="Source painting of the River Thames and Saint Paul’s Cathedral used for the matched regularization comparison" loading="lazy">
+          <figcaption><strong>Input artwork</strong><span>Paper example 00171768</span></figcaption>
+        </figure>
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata" aria-label="FrescoDiffusion with global regularization at lambda equal to one point five on the River Thames example"><source src="regional/00171768-global-lambda-1.5.mp4" type="video/mp4"></video>
+          <figcaption><strong>Global regularization</strong><span>FrescoDiffusion · λ = 1.5</span></figcaption>
+        </figure>
+        <figure class="featured">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Regional FrescoDiffusion at lambda equal to one point five on the River Thames example"><source src="regional/00171768-regional-lambda-1.5.mp4" type="video/mp4"></video>
+          <figcaption><strong>Regional regularization</strong><span>R-FrescoDiffusion · λ = 1.5</span></figcaption>
+        </figure>
+      </div>
+      <p class="setup-note"><strong>Matched paper example.</strong> The global schedule regularizes the whole canvas uniformly. The regional schedule keeps background regions closer to the prior while allowing activity regions—such as the boats and rowers—to move more freely.</p>
     </div></section>
 
     <section class="section hero is-light" id="BibTeX"><div class="container is-max-desktop content">
       <h2 class="title is-3">BibTeX</h2>
-      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre><code id="bibtex-code">@article{casellesdupre2026frescodiffusion,
-  title   = {FrescoDiffusion: 4K Image-to-Video with Prior-Regularized Tiled Diffusion},
-  author  = {Caselles-Dupr\'e, Hugo and Koroglu, Mathis and Jeanneret, Guillaume and Dapogny, Arnaud and Cord, Matthieu},
-  year    = {2026}
+      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre><code id="bibtex-code">@misc{casellesdupré2026frescodiffusion4kimagetovideopriorregularized,
+      title={{FrescoDiffusion}: 4K Image-to-Video with Prior-Regularized Tiled Diffusion},
+      author={Hugo Caselles-Dupré and Mathis Koroglu and Guillaume Jeanneret and Arnaud Dapogny and Matthieu Cord},
+      year={2026},
+      eprint={2603.17555},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2603.17555},
 }</code></pre></div>
     </div></section>
 

@@ -126,6 +126,7 @@ function initializeInteractiveVideo(video) {
 
 function initializeVideoPanZoom(viewport) {
     const video = viewport.querySelector('video');
+    const dragSurface = viewport.querySelector('[data-video-drag-surface]');
     const zoomInButton = viewport.querySelector('[data-video-zoom-in]');
     const zoomOutButton = viewport.querySelector('[data-video-zoom-out]');
     const resetButton = viewport.querySelector('[data-video-zoom-reset]');
@@ -206,21 +207,23 @@ function initializeVideoPanZoom(viewport) {
         else setScale(2);
     });
 
-    viewport.addEventListener('pointerdown', (event) => {
+    dragSurface.addEventListener('pointerdown', (event) => {
         if (scale <= minimumScale || event.button !== 0 || event.target.closest('.video-zoom-controls')) return;
-        const bounds = viewport.getBoundingClientRect();
-        if (event.clientY > bounds.bottom - 64) return;
         activePointer = event.pointerId;
         pointerOriginX = event.clientX;
         pointerOriginY = event.clientY;
         dragOriginX = translateX;
         dragOriginY = translateY;
         viewport.classList.add('is-dragging');
-        viewport.setPointerCapture(event.pointerId);
+        try {
+            dragSurface.setPointerCapture(event.pointerId);
+        } catch {
+            // Window-level listeners below keep dragging functional when capture is unavailable.
+        }
         event.preventDefault();
     });
 
-    viewport.addEventListener('pointermove', (event) => {
+    window.addEventListener('pointermove', (event) => {
         if (event.pointerId !== activePointer) return;
         translateX = dragOriginX + event.clientX - pointerOriginX;
         translateY = dragOriginY + event.clientY - pointerOriginY;
@@ -230,13 +233,13 @@ function initializeVideoPanZoom(viewport) {
 
     function endDrag(event) {
         if (event.pointerId !== activePointer) return;
-        if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+        if (dragSurface.hasPointerCapture(event.pointerId)) dragSurface.releasePointerCapture(event.pointerId);
         activePointer = null;
         viewport.classList.remove('is-dragging');
     }
 
-    viewport.addEventListener('pointerup', endDrag);
-    viewport.addEventListener('pointercancel', endDrag);
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
 
     viewport.addEventListener('keydown', (event) => {
         if (event.key === '+' || event.key === '=') setScale(scale + 0.5);

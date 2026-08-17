@@ -1,6 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.zoom-group').forEach((group) => {
     const sources = Array.from(group.querySelectorAll('.zoom-source'));
+    const minimumZoom = 2;
+    const maximumZoom = 8;
+    let zoom = 4;
+    let lensDiameter = 180;
+
+    const syncLensDiameter = () => {
+      const visibleWidths = sources.map((source) => source.clientWidth).filter((width) => width > 0);
+      if (!visibleWidths.length) return;
+      lensDiameter = Math.max(82, Math.min(180, ...visibleWidths.map((width) => width - 16)));
+      sources.forEach((source) => source.style.setProperty('--zoom-diameter', `${lensDiameter}px`));
+    };
+
+    const applyZoom = () => {
+      const zoomSize = `${zoom * 100}%`;
+      sources.forEach((source) => source.style.setProperty('--zoom-size', zoomSize));
+      group.dataset.zoomLevel = zoom.toFixed(2);
+    };
+
+    const updateLinkedFocus = (x, y) => {
+      sources.forEach((source) => {
+        const halfLens = lensDiameter / 2 + 4;
+        const lensX = Math.max(halfLens, Math.min(source.clientWidth - halfLens, x * source.clientWidth));
+        const lensY = Math.max(halfLens, Math.min(source.clientHeight - halfLens, y * source.clientHeight));
+        source.style.setProperty('--zoom-focus-x', `${x * 100}%`);
+        source.style.setProperty('--zoom-focus-y', `${y * 100}%`);
+        source.style.setProperty('--zoom-lens-x', `${lensX}px`);
+        source.style.setProperty('--zoom-lens-y', `${lensY}px`);
+      });
+    };
 
     sources.forEach((source) => {
       const image = source.querySelector('img');
@@ -9,6 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       if (image.complete) setZoomImage();
       image.addEventListener('load', setZoomImage, { once: true });
+
+      source.addEventListener('pointerenter', syncLensDiameter);
+      source.addEventListener('wheel', (event) => {
+        if (!group.classList.contains('is-zooming')) return;
+        event.preventDefault();
+        zoom = Math.max(minimumZoom, Math.min(maximumZoom, zoom * Math.exp(-event.deltaY * 0.0015)));
+        applyZoom();
+      }, { passive: false });
     });
 
     group.addEventListener('pointermove', (event) => {
@@ -20,16 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const bounds = source.getBoundingClientRect();
-      const x = Math.min(100, Math.max(0, ((event.clientX - bounds.left) / bounds.width) * 100));
-      const y = Math.min(100, Math.max(0, ((event.clientY - bounds.top) / bounds.height) * 100));
+      const x = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
+      const y = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
 
-      sources.forEach((item) => {
-        item.style.setProperty('--zoom-x', `${x}%`);
-        item.style.setProperty('--zoom-y', `${y}%`);
-      });
+      updateLinkedFocus(x, y);
       group.classList.add('is-zooming');
     });
 
     group.addEventListener('pointerleave', () => group.classList.remove('is-zooming'));
+    window.addEventListener('resize', syncLensDiameter, { passive: true });
+    applyZoom();
   });
 });

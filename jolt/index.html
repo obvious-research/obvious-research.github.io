@@ -82,7 +82,7 @@
         <span class="author-block"><a href="https://cord.isir.upmc.fr" target="_blank" rel="noopener">Matthieu Cord</a><sup>2,3</sup>,</span>
         <span class="author-block">Arnaud Dapogny<sup>2</sup></span>
       </div>
-      <div class="is-size-5 publication-authors"><span class="author-block"><sup>1</sup>Obvious Research &nbsp; <sup>2</sup>Sorbonne Université, CNRS, ISIR &nbsp; <sup>3</sup>Valeo.ai</span></div>
+      <div class="is-size-5 publication-authors"><span class="author-block"><a href="https://obvious-research.github.io/" target="_blank" rel="noopener"><sup>1</sup>Obvious Research</a> &nbsp; <a href="https://www.isir.upmc.fr/isir/?lang=en" target="_blank" rel="noopener"><sup>2</sup>Sorbonne Université, CNRS, ISIR</a> &nbsp; <a href="https://valeoai.github.io/" target="_blank" rel="noopener"><sup>3</sup>Valeo.ai</a></span></div>
       <div class="column has-text-centered"><div class="publication-links">
         <span class="link-block"><a href="static/pdfs/jolt.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
       </div></div>
@@ -90,18 +90,12 @@
 
     <section class="section teaser-section"><div class="container wide-container publication-body">
       <div class="main-figure-shell">
-        <div class="control-panel">
-          <span class="control-kicker">Controls</span>
-          <div><strong>Master prompt</strong><p>A soaring painted dome of swirling angels ascending into golden light, dramatic foreshortening, luminous Baroque ceiling fresco.</p></div>
-          <div><strong>Detail prompt</strong><p>Enhance image, add details.</p></div>
-          <div><strong>Complexity</strong><p>α ∈ [0, 1]</p></div>
-        </div>
         <div class="main-comparison zoom-group" aria-label="Comparison between the base model and JoLT">
-          <figure><div class="zoom-source"><img src="static/images/main/base_generation_flux2_klein_9b_2048.jpg" alt="FLUX.2 Klein-9B base generation at 2048 square pixels"></div><figcaption><strong>FLUX.2 Klein-9B</strong><span>2048² px</span></figcaption></figure>
-          <figure class="ours"><div class="zoom-source"><img src="static/images/main/jolt_refined_output_4096.jpg" alt="JoLT refined generation at 4096 square pixels"></div><figcaption><strong>JoLT (ours)</strong><span>4096² px</span></figcaption></figure>
+          <figure><figcaption><strong>FLUX.2 Klein-9B</strong><span>2048² px</span></figcaption><div class="zoom-source"><img src="static/images/main/base_generation_flux2_klein_9b_2048.jpg" alt="FLUX.2 Klein-9B base generation at 2048 square pixels"></div></figure>
+          <figure class="ours"><figcaption><strong>JoLT (ours)</strong><span>4096² px</span></figcaption><div class="zoom-source"><img src="static/images/main/jolt_refined_output_4096.jpg" alt="JoLT refined generation at 4096 square pixels"></div></figure>
         </div>
       </div>
-      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to magnify the same location in both views.</p>
+      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to compare the same area, then scroll over it to change the magnification.</p>
       <p class="content has-text-centered main-caption"><strong>Controllable high-resolution generation.</strong> The master prompt establishes the scene; the detail prompt and feedback strength α control local density and style while JoLT preserves a coherent global composition.</p>
       <p class="setup-note"><strong>Figure 1 setup.</strong> FLUX.2 Klein-9B, four denoising steps, and a fixed seed. The base view is generated at 2048². JoLT produces 4096² with 1024² high-resolution windows, 512 px stride, and α = 0.25.</p>
     </div></section>
@@ -126,7 +120,7 @@
 
     <section class="section hero is-light" id="qualitative"><div class="container gallery-container publication-body">
       <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
-      <p class="section-lede">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, then move the cursor over any image to inspect the same normalized crop across the row.</p>
+      <p class="section-lede">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, move the cursor over any image to inspect the same normalized crop across the row, and scroll while hovering to adjust the magnification.</p>
       <div class="method-header"><span>JoLT (ours)</span><span>DemoFusion</span><span>ResDiT</span><span>SEGA</span></div>
 
       <div class="research-carousel qualitative-carousel" data-carousel aria-label="Qualitative comparison examples">
@@ -208,10 +202,13 @@
 
     <section class="section" id="BibTeX"><div class="container is-max-desktop content">
       <h2 class="title is-3">BibTeX</h2>
-      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre><code id="bibtex-code">@article{koroglu2026jolt,
-  title  = {JoLT: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation},
-  author = {Koroglu, Mathis and Jeanneret, Guillaume and Caselles-Dupr\'e, Hugo and Cord, Matthieu and Dapogny, Arnaud},
-      year   = {2026}
+      <div class="bibtex-container"><button class="copy-bibtex-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre><code id="bibtex-code">@inproceedings{
+anonymous2026jolt,
+title={{JoLT}: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation},
+author={Koroglu, Mathis and Jeanneret, Guillaume and Caselles-Dupr\'e, Hugo and Cord, Matthieu and Dapogny, Arnaud},
+booktitle={The 4th AI for Visual Arts Workshop},
+year={2026},
+url={https://openreview.net/forum?id=9hGsmtZrCI}
 }</code></pre></div>
     </div></section>
 

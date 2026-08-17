@@ -5,6 +5,9 @@
 .video-panzoom { position: relative; overflow: hidden; aspect-ratio: 75 / 83; border-radius: var(--border-radius-lg); outline: none; touch-action: pan-y; user-select: none; }
 .video-panzoom video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border-radius: inherit; object-fit: cover; transform: translate3d(0, 0, 0) scale(1); transform-origin: center; will-change: transform; }
 .video-panzoom.is-zoomed { touch-action: none; }
+.video-panzoom-drag-surface { position: absolute; inset: 0 0 64px; z-index: 2; cursor: grab; pointer-events: none; touch-action: none; }
+.video-panzoom.is-zoomed .video-panzoom-drag-surface { pointer-events: auto; }
+.video-panzoom.is-dragging .video-panzoom-drag-surface { cursor: grabbing; }
 .video-panzoom video { cursor: zoom-in; }
 .video-panzoom.is-zoomed video { cursor: grab; }
 .video-panzoom.is-dragging video { cursor: grabbing; }
@@ -34,8 +37,9 @@
 .dataset-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: .4rem; padding: .72rem 1rem; border: 1px solid #cbd8ff; border-radius: 999px; background: #f6f8ff; font-size: .88rem; font-weight: 700; }
 .comparison-container { width: min(1520px, calc(100% - 2rem)); }
 .comparison-intro { max-width: 760px; margin: -0.5rem auto 2rem; color: var(--text-secondary); }
-.method-key, .video-comparison-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.75rem; }
-.method-key { position: sticky; top: 0; z-index: 4; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); text-align: center; font-size: 0.77rem; font-weight: 700; }
+.video-comparison-grid { display: grid; gap: 0.75rem; }
+.comparison-grid--two-rows { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.comparison-grid--three-rows { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1100px; margin-inline: auto; }
 .comparison-example { padding: 2.25rem 0; border-bottom: 1px solid var(--border-color); }
 .comparison-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
 .comparison-heading .title { margin-bottom: 0; }
@@ -54,28 +58,29 @@
 .carousel-arrow:hover { border-color: var(--primary-color); color: var(--primary-color); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .carousel-arrow:focus-visible { outline: 3px solid rgb(37 99 235 / .25); outline-offset: 3px; }
 .carousel-status { min-width: 4.5rem; padding: .45rem .8rem; border-radius: 999px; background: var(--text-primary); color: white; text-align: center; font-size: .78rem; font-weight: 800; letter-spacing: .04em; }
-.parameter-comparison { display: grid; grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr); align-items: center; gap: 1rem; }
+.parameter-comparison { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 1rem; }
 .parameter-comparison figure { overflow: hidden; padding: .65rem; border: 1px solid var(--border-color); border-radius: 16px; background: white; box-shadow: var(--shadow-md); }
 .parameter-comparison figure.featured { border-color: var(--primary-color); box-shadow: 0 0 0 1px var(--primary-color), var(--shadow-md); }
 .parameter-comparison video { display: block; width: 100%; height: auto; border-radius: 11px; background: transparent; }
 .parameter-comparison figcaption { display: flex; flex-direction: column; gap: .2rem; padding: .8rem .35rem .25rem; text-align: center; }
 .parameter-comparison figcaption strong { color: var(--text-primary); font-size: 1rem; }
 .parameter-comparison figcaption span { color: var(--text-secondary); font-size: .78rem; }
-.parameter-arrow { display: flex; flex-direction: column; align-items: center; gap: .45rem; color: var(--primary-color); text-align: center; }
+.parameter-arrow { display: flex; align-items: center; justify-content: center; gap: .65rem; margin-top: 1rem; color: var(--primary-color); text-align: center; }
 .parameter-arrow span { font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .parameter-arrow i { font-size: 2rem; }
-.regional-comparison { overflow: hidden; border: 1px solid var(--border-color); border-radius: 18px; background: white; box-shadow: var(--shadow-lg); }
-.regional-comparison img { display: block; width: 100%; border-radius: 0; box-shadow: none; }
-.regional-comparison figcaption { max-width: 960px; margin: 0 auto; padding: 1rem 1.25rem 1.2rem; color: var(--text-secondary); text-align: center; font-size: .88rem; }
-.video-comparison-grid video, .parameter-comparison video { cursor: pointer; }
+.regional-comparison { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 1rem; }
+.regional-comparison figure { overflow: hidden; min-width: 0; padding: .65rem; border: 1px solid var(--border-color); border-radius: 16px; background: white; box-shadow: var(--shadow-md); }
+.regional-comparison figure.featured { border-color: var(--primary-color); box-shadow: 0 0 0 1px var(--primary-color), var(--shadow-md); }
+.regional-comparison img, .regional-comparison video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 11px; background: transparent; object-fit: cover; }
+.regional-comparison figcaption { display: flex; flex-direction: column; gap: .2rem; padding: .8rem .35rem .25rem; text-align: center; }
+.regional-comparison figcaption strong { color: var(--text-primary); font-size: 1rem; }
+.regional-comparison figcaption span { color: var(--text-secondary); font-size: .78rem; }
+.video-comparison-grid video, .parameter-comparison video, .regional-comparison video { cursor: pointer; }
 @keyframes carousel-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
 .bibtex-container { position: relative; }
 .copy-bibtex-btn { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2; padding: 0.55rem 0.8rem; border: 0; border-radius: 8px; background: var(--primary-color); color: white; box-shadow: var(--shadow-md); cursor: pointer; font-weight: 700; }
 .copy-bibtex-btn.copied .copy-text::after { content: none; }
 @media (max-width: 1050px) {
-  .method-key, .video-comparison-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .method-key { display: none; }
-  .parameter-comparison { grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr); }
   .dataset-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
@@ -89,8 +94,7 @@
   .video-comparison-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .comparison-heading { align-items: flex-start; flex-direction: column; }
   .parameter-comparison { grid-template-columns: 1fr; }
-  .parameter-arrow { flex-direction: row; justify-content: center; padding: .15rem 0; }
-  .parameter-arrow i { transform: rotate(90deg); }
+  .regional-comparison { grid-template-columns: 1fr; }
   .carousel-arrow span { display: none; }
   .carousel-arrow { width: 2.75rem; height: 2.75rem; justify-content: center; padding: 0; }
 }
