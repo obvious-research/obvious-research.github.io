@@ -53,9 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!deltaY || !event.cancelable) return;
 
         const nextZoom = Math.max(minimumZoom, Math.min(maximumZoom, zoom * Math.exp(-deltaY * 0.0015)));
-        const reachedBoundary = nextZoom === minimumZoom || nextZoom === maximumZoom;
-
-        if (!reachedBoundary) event.preventDefault();
+        event.preventDefault();
         zoom = nextZoom;
         applyZoom();
       }, { passive: false });
