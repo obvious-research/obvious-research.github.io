@@ -105,11 +105,18 @@ function initializeInteractiveVideo(video) {
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
-    video.removeAttribute('controls');
     video.setAttribute('autoplay', '');
     video.setAttribute('loop', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
+
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) {
+        video.controls = true;
+        return;
+    }
+
+    video.removeAttribute('controls');
 
     const revealControls = () => {
         video.controls = true;
@@ -141,6 +148,7 @@ function initializeVideoPanZoom(viewport) {
     let dragOriginY = 0;
     let pointerOriginX = 0;
     let pointerOriginY = 0;
+    let touchGesture = null;
 
     function clampTranslation() {
         const maximumX = viewport.clientWidth * (scale - 1) / 2;
@@ -190,6 +198,48 @@ function initializeVideoPanZoom(viewport) {
         render();
     }
 
+    const touchDistance = (first, second) => Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+
+    const touchMidpoint = (first, second) => ({
+        x: (first.clientX + second.clientX) / 2,
+        y: (first.clientY + second.clientY) / 2
+    });
+
+    function startTouchGesture(event) {
+        if (event.target.closest('.video-zoom-controls')) return;
+        const bounds = viewport.getBoundingClientRect();
+        const touchesNativeControls = event.touches.length === 1 && event.touches[0].clientY >= bounds.bottom - 64;
+        if (touchesNativeControls) return;
+
+        if (event.touches.length >= 2) {
+            const center = touchMidpoint(event.touches[0], event.touches[1]);
+            touchGesture = {
+                type: 'pinch',
+                distance: Math.max(1, touchDistance(event.touches[0], event.touches[1])),
+                scale,
+                translateX,
+                translateY,
+                midpoint: center,
+                focusX: center.x - bounds.left - bounds.width / 2,
+                focusY: center.y - bounds.top - bounds.height / 2
+            };
+        } else if (event.touches.length === 1 && scale > minimumScale) {
+            touchGesture = {
+                type: 'pan',
+                x: event.touches[0].clientX,
+                y: event.touches[0].clientY,
+                translateX,
+                translateY
+            };
+        } else {
+            touchGesture = null;
+            return;
+        }
+
+        viewport.classList.add('is-dragging');
+        event.preventDefault();
+    }
+
     zoomInButton.addEventListener('click', () => setScale(scale + 0.5));
     zoomOutButton.addEventListener('click', () => setScale(scale - 0.5));
     resetButton.addEventListener('click', resetView);
@@ -208,7 +258,7 @@ function initializeVideoPanZoom(viewport) {
     });
 
     dragSurface.addEventListener('pointerdown', (event) => {
-        if (scale <= minimumScale || event.button !== 0 || event.target.closest('.video-zoom-controls')) return;
+        if (event.pointerType === 'touch' || scale <= minimumScale || event.button !== 0 || event.target.closest('.video-zoom-controls')) return;
         activePointer = event.pointerId;
         pointerOriginX = event.clientX;
         pointerOriginY = event.clientY;
@@ -241,6 +291,35 @@ function initializeVideoPanZoom(viewport) {
     window.addEventListener('pointerup', endDrag);
     window.addEventListener('pointercancel', endDrag);
 
+    viewport.addEventListener('touchstart', startTouchGesture, { passive: false });
+    viewport.addEventListener('touchmove', (event) => {
+        if (!touchGesture || event.target.closest('.video-zoom-controls')) return;
+
+        if (touchGesture.type === 'pinch' && event.touches.length >= 2) {
+            const center = touchMidpoint(event.touches[0], event.touches[1]);
+            const nextScale = Math.max(minimumScale, Math.min(maximumScale, touchGesture.scale * touchDistance(event.touches[0], event.touches[1]) / touchGesture.distance));
+            const ratio = nextScale / touchGesture.scale;
+            scale = nextScale;
+            translateX = touchGesture.focusX - ratio * (touchGesture.focusX - touchGesture.translateX) + center.x - touchGesture.midpoint.x;
+            translateY = touchGesture.focusY - ratio * (touchGesture.focusY - touchGesture.translateY) + center.y - touchGesture.midpoint.y;
+            render();
+        } else if (touchGesture.type === 'pan' && event.touches.length === 1) {
+            translateX = touchGesture.translateX + event.touches[0].clientX - touchGesture.x;
+            translateY = touchGesture.translateY + event.touches[0].clientY - touchGesture.y;
+            render();
+        }
+        event.preventDefault();
+    }, { passive: false });
+
+    function endTouchGesture(event) {
+        touchGesture = null;
+        viewport.classList.remove('is-dragging');
+        if (event.touches.length) startTouchGesture(event);
+    }
+
+    viewport.addEventListener('touchend', endTouchGesture, { passive: false });
+    viewport.addEventListener('touchcancel', endTouchGesture, { passive: false });
+
     viewport.addEventListener('keydown', (event) => {
         if (event.key === '+' || event.key === '=') setScale(scale + 0.5);
         else if (event.key === '-' || event.key === '_') setScale(scale - 0.5);
@@ -272,6 +351,7 @@ function initializeCarousel(carousel) {
             slide.setAttribute('aria-hidden', String(!isActive));
             slide.querySelectorAll('video').forEach((video) => {
                 if (isActive) {
+                    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) video.controls = true;
                     playVideo(video);
                 } else {
                     video.pause();

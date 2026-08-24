@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const maximumZoom = 8;
     let zoom = 4;
     let lensDiameter = 180;
+    let activeTouchSource = null;
+    let pendingTouch = null;
+    let pinchStartDistance = 0;
+    let pinchStartZoom = zoom;
 
     const normalizedWheelDelta = (event) => {
       if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
@@ -37,6 +41,40 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
 
+    const updateFocusFromPoint = (source, clientX, clientY) => {
+      const bounds = source.getBoundingClientRect();
+      const x = Math.min(1, Math.max(0, (clientX - bounds.left) / bounds.width));
+      const y = Math.min(1, Math.max(0, (clientY - bounds.top) / bounds.height));
+      updateLinkedFocus(x, y);
+    };
+
+    const touchDistance = (first, second) => Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+
+    const touchMidpoint = (first, second) => ({
+      x: (first.clientX + second.clientX) / 2,
+      y: (first.clientY + second.clientY) / 2
+    });
+
+    const beginTouchPinch = (touches) => {
+      if (touches.length < 2) return;
+      pinchStartDistance = Math.max(1, touchDistance(touches[0], touches[1]));
+      pinchStartZoom = zoom;
+    };
+
+    const activateTouchZoom = (source, clientX, clientY) => {
+      activeTouchSource = source;
+      syncLensDiameter();
+      updateFocusFromPoint(source, clientX, clientY);
+      group.classList.add('is-zooming', 'is-touch-zooming');
+    };
+
+    const deactivateTouchZoom = () => {
+      activeTouchSource = null;
+      pendingTouch = null;
+      pinchStartDistance = 0;
+      group.classList.remove('is-zooming', 'is-touch-zooming');
+    };
+
     sources.forEach((source) => {
       const image = source.querySelector('img');
       const setZoomImage = () => {
@@ -57,6 +95,76 @@ document.addEventListener('DOMContentLoaded', () => {
         zoom = nextZoom;
         applyZoom();
       }, { passive: false });
+
+      source.addEventListener('touchstart', (event) => {
+        if (activeTouchSource !== source) {
+          const touch = event.touches[0];
+          pendingTouch = touch ? {
+            source,
+            startX: touch.clientX,
+            startY: touch.clientY,
+            currentX: touch.clientX,
+            currentY: touch.clientY,
+            moved: false
+          } : null;
+          return;
+        }
+
+        event.preventDefault();
+        if (event.touches.length >= 2) {
+          beginTouchPinch(event.touches);
+          const center = touchMidpoint(event.touches[0], event.touches[1]);
+          updateFocusFromPoint(source, center.x, center.y);
+        } else if (event.touches.length === 1) {
+          updateFocusFromPoint(source, event.touches[0].clientX, event.touches[0].clientY);
+        }
+      }, { passive: false });
+
+      source.addEventListener('touchmove', (event) => {
+        if (activeTouchSource !== source) {
+          if (pendingTouch && pendingTouch.source === source && event.touches.length) {
+            const touch = event.touches[0];
+            pendingTouch.currentX = touch.clientX;
+            pendingTouch.currentY = touch.clientY;
+            pendingTouch.moved = pendingTouch.moved || Math.hypot(touch.clientX - pendingTouch.startX, touch.clientY - pendingTouch.startY) > 10;
+          }
+          return;
+        }
+
+        event.preventDefault();
+        if (event.touches.length >= 2) {
+          if (!pinchStartDistance) beginTouchPinch(event.touches);
+          const center = touchMidpoint(event.touches[0], event.touches[1]);
+          zoom = Math.max(minimumZoom, Math.min(maximumZoom, pinchStartZoom * touchDistance(event.touches[0], event.touches[1]) / pinchStartDistance));
+          updateFocusFromPoint(source, center.x, center.y);
+          applyZoom();
+        } else if (event.touches.length === 1) {
+          pinchStartDistance = 0;
+          updateFocusFromPoint(source, event.touches[0].clientX, event.touches[0].clientY);
+        }
+      }, { passive: false });
+
+      source.addEventListener('touchend', (event) => {
+        if (activeTouchSource === source) {
+          pinchStartDistance = 0;
+          if (event.cancelable) event.preventDefault();
+          return;
+        }
+
+        if (pendingTouch && pendingTouch.source === source && !pendingTouch.moved) {
+          const touch = event.changedTouches[0];
+          const x = touch ? touch.clientX : pendingTouch.currentX;
+          const y = touch ? touch.clientY : pendingTouch.currentY;
+          activateTouchZoom(source, x, y);
+          if (event.cancelable) event.preventDefault();
+        }
+        pendingTouch = null;
+      }, { passive: false });
+
+      source.addEventListener('touchcancel', () => {
+        pendingTouch = null;
+        pinchStartDistance = 0;
+      }, { passive: true });
     });
 
     group.addEventListener('pointermove', (event) => {
@@ -67,15 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const bounds = source.getBoundingClientRect();
-      const x = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
-      const y = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
-
-      updateLinkedFocus(x, y);
+      updateFocusFromPoint(source, event.clientX, event.clientY);
       group.classList.add('is-zooming');
     });
 
-    group.addEventListener('pointerleave', () => group.classList.remove('is-zooming'));
+    group.addEventListener('pointerleave', () => {
+      if (!activeTouchSource) group.classList.remove('is-zooming');
+    });
+    document.addEventListener('touchstart', (event) => {
+      if (activeTouchSource && !group.contains(event.target)) deactivateTouchZoom();
+    }, { capture: true, passive: true });
     window.addEventListener('resize', syncLensDiameter, { passive: true });
     applyZoom();
   });

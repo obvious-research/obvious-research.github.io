@@ -17,6 +17,7 @@
 .zoom-group.is-zooming .zoom-source::after { opacity: 1; }
 .zoom-hint { margin: 0.8rem 0 0; color: var(--text-secondary); text-align: center; font-size: 0.83rem; }
 .zoom-hint i { margin-right: 0.35rem; color: var(--primary-color); }
+.touch-gesture-copy { display: none; }
 .main-caption { max-width: 920px; margin: 1.25rem auto 0; }
 .setup-note { max-width: 1050px; margin: 1.25rem auto 0; padding: 0.9rem 1rem; border-left: 3px solid var(--primary-color); background: var(--background-accent); color: var(--text-secondary); font-size: 0.88rem; }
 .method-lede { margin-bottom: 1.5rem; }
@@ -71,4 +72,11 @@
   .example-prompt { grid-template-columns: 1fr; gap: .25rem; }
 }
 @media (prefers-reduced-motion: reduce) { [data-carousel-slide].is-active { animation: none; } .zoom-source::after { transition: none; } }
-@media (hover: none) { .zoom-source { cursor: default; } .zoom-source::after { display: none; } .zoom-hint { display: none; } }
+@media (hover: none), (pointer: coarse) {
+  .desktop-gesture-copy { display: none; }
+  .touch-gesture-copy { display: inline; }
+  .zoom-source { cursor: zoom-in; touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; }
+  .zoom-group.is-touch-zooming .zoom-source { touch-action: none; }
+  .zoom-source::after { display: block; }
+  .zoom-hint { display: block; }
+}

@@ -37,9 +37,11 @@
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/project.css">
+  <link rel="stylesheet" href="../shared/mobile.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
   <script defer src="static/js/magnifier.js"></script>
+  <script defer src="../shared/touch-viewer.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,7 +98,7 @@
           <figure class="ours"><figcaption><strong>JoLT (ours)</strong><span>4096² px</span></figcaption><div class="zoom-source"><img src="static/images/main/jolt_refined_output_4096.jpg" alt="JoLT refined generation at 4096 square pixels"></div></figure>
         </div>
       </div>
-      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to compare the same area, then scroll over it to change the magnification. Move the pointer away from the image to resume page scrolling.</p>
+      <p class="zoom-hint"><i class="fas fa-search-plus"></i><span class="desktop-gesture-copy">Hover either image to compare the same area, then scroll over it to change the magnification. Move the pointer away from the image to resume page scrolling.</span><span class="touch-gesture-copy">Tap an image to activate the linked lens, drag with one finger to compare, and pinch with two fingers to magnify. Tap outside the comparison to resume page gestures.</span></p>
       <p class="content has-text-centered main-caption"><strong>Controllable high-resolution generation.</strong> The master prompt establishes the scene; the detail prompt and feedback strength α control local density and style while JoLT preserves a coherent global composition.</p>
       <p class="setup-note"><strong>Figure 1 setup.</strong> FLUX.2 Klein-9B, four denoising steps, and a fixed seed. The base view is generated at 2048². JoLT produces 4096² with 1024² high-resolution windows, 512 px stride, and α = 0.25.</p>
     </div></section>
@@ -113,15 +115,15 @@
       <h2 class="title is-3 has-text-centered">Method</h2>
       <p class="section-lede method-lede">JoLT keeps a global trajectory and a tiled detail trajectory alive together. At every denoising step, each stream updates the other before sampling continues.</p>
       <figure class="paper-method-figure">
-        <img src="static/images/method/method-overview.png" alt="JoLT paper method diagram showing initialization, the low-resolution stream, joint prior, high-resolution stream, and bidirectional conditioning" loading="lazy">
-        <figcaption><strong>The complete JoLT pipeline from the paper.</strong> A shared Gaussian draw initializes both trajectories. The LR stream denoises the global composition from the master prompt; its clean estimate is decoded, upsampled, and re-encoded as the joint prior for tiled HR denoising. The HR canvas is then randomly subsampled and blended into the next LR update with weight α.</figcaption>
+        <img src="static/images/method/method-overview.png" alt="JoLT paper method diagram showing initialization, the low-resolution stream, joint prior, high-resolution stream, and bidirectional conditioning" loading="lazy" data-touch-zoom>
+        <figcaption><strong>The complete JoLT pipeline from the paper.</strong> A shared Gaussian draw initializes both trajectories. The LR stream denoises the global composition from the master prompt; its clean estimate is decoded, upsampled, and re-encoded as the joint prior for tiled HR denoising. The HR canvas is then randomly subsampled and blended into the next LR update with weight α.<span class="touch-figure-hint"><i class="fas fa-search-plus" aria-hidden="true"></i>Tap the diagram for a pinch-to-zoom view.</span></figcaption>
       </figure>
       <p class="setup-note"><strong>Method setup.</strong> FLUX.2 Klein-9B distilled to four sampling steps. Unless stated otherwise: 4096² canvas, 1024² tiled denoising windows, 512 px stride (50% overlap), 1024² LR stream, and constant α = 0.25.</p>
     </div></section>
 
     <section class="section hero is-light" id="qualitative"><div class="container gallery-container publication-body">
       <h2 class="title is-3 has-text-centered">Qualitative Comparison</h2>
-      <p class="section-lede">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, move the cursor over any image to inspect the same normalized crop across the row, and scroll while hovering to adjust the magnification.</p>
+      <p class="section-lede"><span class="desktop-gesture-copy">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, move the cursor over any image to inspect the same normalized crop across the row, and scroll while hovering to adjust the magnification.</span><span class="touch-gesture-copy">Six matched prompts, four methods, and 24 full-resolution outputs. Use the arrows to browse examples, tap any image to activate the linked lens, drag to compare the same area, and pinch to magnify.</span></p>
       <div class="method-header"><span>JoLT (ours)</span><span>DemoFusion</span><span>ResDiT</span><span>SEGA</span></div>
 
       <div class="research-carousel qualitative-carousel" data-carousel aria-label="Qualitative comparison examples">

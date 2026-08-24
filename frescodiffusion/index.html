@@ -36,8 +36,10 @@
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/project.css">
+  <link rel="stylesheet" href="../shared/mobile.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script defer src="../shared/touch-viewer.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -100,7 +102,7 @@
             <button type="button" data-video-zoom-in aria-label="Zoom in" title="Zoom in"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
             <button type="button" data-video-zoom-reset aria-label="Reset zoom and position" title="Reset zoom and position"><i class="fas fa-compress-arrows-alt" aria-hidden="true"></i></button>
           </div>
-          <p class="video-zoom-help" id="hero-video-help"><i class="fas fa-hand-paper" aria-hidden="true"></i> Scroll to zoom · drag to explore · double-click to zoom/reset</p>
+          <p class="video-zoom-help" id="hero-video-help"><i class="fas fa-hand-paper" aria-hidden="true"></i> Scroll or pinch to zoom · drag to explore · double-click to zoom/reset</p>
         </div>
       </div>
       <h2 class="subtitle has-text-centered">From a single ultra-high-definition fresco, FrescoDiffusion produces a coherent video at the source resolution while preserving local detail across the full canvas.</h2>
@@ -116,7 +118,8 @@
 
     <section class="section" id="method"><div class="container is-max-desktop publication-body">
       <h2 class="title is-3 has-text-centered">Method</h2>
-      <img class="method-figure" src="static/images/methodo-v2.png" alt="FrescoDiffusion method overview showing the low-resolution prior and high-resolution tiled denoising" loading="lazy">
+      <img class="method-figure" src="static/images/methodo-v2.png" alt="FrescoDiffusion method overview showing the low-resolution prior and high-resolution tiled denoising" loading="lazy" data-touch-zoom>
+      <p class="touch-figure-hint"><i class="fas fa-search-plus" aria-hidden="true"></i>Tap the diagram for a pinch-to-zoom view.</p>
       <p class="content has-text-justified figure-caption"><strong>FrescoDiffusion couples local and global generation.</strong> A native-resolution teacher video supplies the prior trajectory. Overlapping full-resolution tiles preserve fine structures, while prior regularization keeps their motion and layout globally coherent.</p>
       <p class="setup-note"><strong>Generation setup.</strong> All examples use Wan 2.1 I2V-14B as the video backbone with 81 frames. FrescoDiffusion uses overlapping latent windows and prior guidance at every denoising step; comparison methods share the same input image and prompt.</p>
     </div></section>
@@ -216,7 +219,7 @@
       <p class="comparison-intro has-text-centered">This is the exact River Thames and St. Paul’s example used in the paper. Both videos start from the same artwork and use λ = 1.5, making the effect of the regional schedule directly comparable.</p>
       <div class="regional-comparison" aria-label="Matched source, global regularization, and regional regularization comparison">
         <figure>
-          <img src="regional/00171768-source.jpg" alt="Source painting of the River Thames and Saint Paul’s Cathedral used for the matched regularization comparison" loading="lazy">
+          <img src="regional/00171768-source.jpg" alt="Source painting of the River Thames and Saint Paul’s Cathedral used for the matched regularization comparison" loading="lazy" data-touch-zoom>
           <figcaption><strong>Input artwork</strong><span>Paper example 00171768</span></figcaption>
         </figure>
         <figure>

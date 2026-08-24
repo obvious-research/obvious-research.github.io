@@ -85,9 +85,9 @@
 }
 @media (max-width: 620px) {
   .publication-header .hero-body { padding-top: 5.5rem; }
-  .video-zoom-help { display: none; }
+  .video-zoom-help { bottom: 3.6rem; display: block; opacity: 1; transform: translate(-50%, 0); }
   .video-zoom-controls { top: .55rem; right: .55rem; opacity: 1; pointer-events: auto; transform: none; }
-  .video-zoom-controls button { width: 1.85rem; height: 1.85rem; }
+  .video-zoom-controls button { width: 2.75rem; height: 2.75rem; }
   .dataset-steps { grid-template-columns: 1fr; }
   .dataset-stats { grid-template-columns: 1fr; }
   .dataset-stats div + div { border-top: 1px solid #cbd8ff; border-left: 0; }
@@ -97,5 +97,10 @@
   .regional-comparison { grid-template-columns: 1fr; }
   .carousel-arrow span { display: none; }
   .carousel-arrow { width: 2.75rem; height: 2.75rem; justify-content: center; padding: 0; }
+}
+@media (max-width: 480px) {
+  .video-comparison-grid { grid-template-columns: 1fr; }
+  .video-zoom-controls { gap: .15rem; padding: .25rem; }
+  .video-zoom-controls span { min-width: 2.7rem; }
 }
 @media (prefers-reduced-motion: reduce) { [data-carousel-slide].is-active { animation: none; } .video-zoom-controls, .video-zoom-help { transition: none; } }

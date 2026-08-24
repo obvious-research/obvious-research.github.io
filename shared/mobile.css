@@ -1,0 +1,236 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+[data-touch-zoom] {
+  cursor: zoom-in;
+  touch-action: pan-y pinch-zoom;
+}
+
+[data-touch-zoom]:focus-visible {
+  outline: 3px solid rgb(37 99 235 / .35);
+  outline-offset: 4px;
+}
+
+.touch-figure-hint {
+  display: none;
+  margin: .65rem auto 0;
+  color: var(--text-secondary);
+  font-size: .78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.touch-figure-hint i {
+  margin-right: .35rem;
+  color: var(--primary-color);
+}
+
+.touch-viewer[hidden] {
+  display: none !important;
+}
+
+.touch-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: .75rem;
+  padding: max(.75rem, env(safe-area-inset-top)) max(.75rem, env(safe-area-inset-right)) max(.75rem, env(safe-area-inset-bottom)) max(.75rem, env(safe-area-inset-left));
+  background: rgb(3 7 18 / .96);
+  color: white;
+}
+
+.touch-viewer__topbar,
+.touch-viewer__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.touch-viewer__topbar {
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.touch-viewer__title {
+  overflow: hidden;
+  margin: 0;
+  color: white;
+  font-size: .82rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.touch-viewer button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 .8rem;
+  border: 1px solid rgb(255 255 255 / .28);
+  border-radius: 999px;
+  background: rgb(30 41 59 / .92);
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.touch-viewer button:focus-visible {
+  outline: 3px solid rgb(96 165 250 / .75);
+  outline-offset: 2px;
+}
+
+.touch-viewer button:disabled {
+  opacity: .42;
+  cursor: default;
+}
+
+.touch-viewer__stage {
+  position: relative;
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #020617;
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-viewer__stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center;
+  will-change: transform;
+  -webkit-user-drag: none;
+}
+
+.touch-viewer__status {
+  min-width: 4.4rem;
+  color: white;
+  text-align: center;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.touch-viewer__hint {
+  margin: 0;
+  color: rgb(226 232 240 / .82);
+  font-size: .72rem;
+  text-align: center;
+}
+
+body.touch-viewer-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .touch-figure-hint {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .publication-header .hero-body {
+    padding: 3.25rem 1rem 2.25rem;
+  }
+
+  .section {
+    padding: 2.5rem 1rem;
+  }
+
+  .container,
+  .column,
+  .publication-body {
+    min-width: 0;
+  }
+
+  .publication-title {
+    overflow-wrap: anywhere;
+    font-size: clamp(1.85rem, 9vw, 2.5rem) !important;
+  }
+
+  .publication-authors .author-block {
+    line-height: 1.9;
+  }
+
+  .publication-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem;
+    max-width: 34rem;
+    margin: 1rem auto 0;
+  }
+
+  .publication-links .link-block,
+  .publication-links .button {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .publication-links .button,
+  .carousel-arrow,
+  .more-works-btn,
+  .copy-bibtex-btn {
+    min-height: 44px;
+  }
+
+  .more-works-container {
+    right: max(.75rem, env(safe-area-inset-right));
+    bottom: max(.75rem, env(safe-area-inset-bottom));
+  }
+
+  .more-works-dropdown {
+    max-height: min(72vh, 32rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-to-top {
+    left: max(.75rem, env(safe-area-inset-left));
+    right: auto;
+    bottom: max(.75rem, env(safe-area-inset-bottom));
+    width: 44px;
+    height: 44px;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow: auto;
+    font-size: .78rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .publication-links {
+    grid-template-columns: 1fr;
+  }
+
+  .touch-viewer {
+    gap: .5rem;
+    padding-inline: max(.5rem, env(safe-area-inset-left));
+  }
+
+  .touch-viewer__hint {
+    font-size: .68rem;
+  }
+}

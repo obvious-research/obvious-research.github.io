@@ -37,8 +37,10 @@
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/project.css">
+  <link rel="stylesheet" href="../shared/mobile.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <script defer src="../shared/touch-viewer.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -102,15 +104,16 @@
 
     <section class="section" id="results"><div class="container is-max-desktop publication-body">
       <h2 class="title is-3 has-text-centered">Results</h2>
-      <article class="result-block"><h3 class="title is-4">Conditioning strength</h3><p>Adjusting the optical-flow conditioning strength changes how closely the generated motion follows the reference.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/strength.mov" type="video/quicktime"></video><p class="figure-caption">Each row increases γ from 0 to 1 while keeping the prompt and input motion fixed.</p></article>
-      <article class="result-block"><h3 class="title is-4">Camera control capabilities</h3><p>OnlyFlow can drive camera movement using either another video or a preset motion field representing a camera trajectory.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/camerac_ctrl.mov" type="video/quicktime"></video><p class="figure-caption">All videos use the same prompt, pan-left trajectory, and seed. OnlyFlow recovers camera-control behavior without task-specific training.</p></article>
+      <article class="result-block"><h3 class="title is-4">Conditioning strength</h3><p>Adjusting the optical-flow conditioning strength changes how closely the generated motion follows the reference.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/strength.mp4" type="video/mp4"></video><p class="figure-caption">Each row increases γ from 0 to 1 while keeping the prompt and input motion fixed.</p></article>
+      <article class="result-block"><h3 class="title is-4">Camera control capabilities</h3><p>OnlyFlow can drive camera movement using either another video or a preset motion field representing a camera trajectory.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/camerac_ctrl.mp4" type="video/mp4"></video><p class="figure-caption">All videos use the same prompt, pan-left trajectory, and seed. OnlyFlow recovers camera-control behavior without task-specific training.</p></article>
       <article class="result-block"><h3 class="title is-4">Comparison with other approaches</h3><p>The method balances motion fidelity with image realism.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/comparison.mp4" type="video/mp4"></video><p class="figure-caption">Methods share the same prompt and input video. OnlyFlow compares favorably with depth-conditioned approaches and remains competitive in temporal coherence and image quality.</p></article>
-      <article class="result-block"><h3 class="title is-4">Semantic alignment</h3><p>Generated content follows both the text and the supplied optical flow.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/semantic_alignment.mov" type="video/quicktime"></video><p class="figure-caption">With the prompt “Trees in forest,” the flow of a smile guides the structure of the generated scene.</p></article>
+      <article class="result-block"><h3 class="title is-4">Semantic alignment</h3><p>Generated content follows both the text and the supplied optical flow.</p><video autoplay playsinline loop muted controls preload="metadata"><source src="static/videos/semantic_alignment.mp4" type="video/mp4"></video><p class="figure-caption">With the prompt “Trees in forest,” the flow of a smile guides the structure of the generated scene.</p></article>
     </div></section>
 
     <section class="section hero is-light" id="method"><div class="container is-max-desktop publication-body">
       <h2 class="title is-3 has-text-centered">Method</h2>
-      <img class="architecture-figure" src="static/images/archi.jpg" alt="OnlyFlow model architecture" loading="lazy">
+      <img class="architecture-figure" src="static/images/archi.jpg" alt="OnlyFlow model architecture" loading="lazy" data-touch-zoom>
+      <p class="touch-figure-hint"><i class="fas fa-search-plus" aria-hidden="true"></i>Tap the diagram for a pinch-to-zoom view.</p>
       <p class="content has-text-justified figure-caption"><strong>OnlyFlow architecture.</strong> A text prompt, noisy diffusion latents, and the optical flow of a reference video form the inputs. A trainable optical-flow encoder produces feature maps injected into the temporal layers of a frozen video diffusion U-Net, so the output follows both the prompt and the reference motion.</p>
     </div></section>
 
