@@ -32,14 +32,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=2">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/project.css?v=4">
-  <link rel="stylesheet" href="../shared/mobile.css?v=3">
+  <link rel="stylesheet" href="static/css/project.css?v=5">
+  <link rel="stylesheet" href="../shared/mobile.css?v=4">
+  <link rel="stylesheet" href="../shared/bibtex.css?v=1">
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/index.js?v=2"></script>
   <script defer src="../shared/touch-viewer.js"></script>
+  <script defer src="../shared/bibtex.js?v=1"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -234,9 +236,9 @@
       <p class="setup-note"><strong>Matched paper example.</strong> The global schedule regularizes the whole canvas uniformly. The regional schedule keeps background regions closer to the prior while allowing activity regions—such as the boats and rowers—to move more freely.</p>
     </div></section>
 
-    <section class="section hero is-light" id="BibTeX"><div class="container is-max-desktop content bibtex-wide-container">
+    <section class="section bibtex-section" id="BibTeX"><div class="container content bibtex-shell">
       <h2 class="title is-3">BibTeX</h2>
-      <div class="bibtex-container bibtex-card"><button class="copy-bibtex-btn" onclick="copyBibTeX()" aria-label="Copy FrescoDiffusion BibTeX citation to clipboard"><i class="fas fa-copy"></i> <span class="copy-text">Copy</span></button><pre tabindex="0" aria-label="Horizontally scrollable FrescoDiffusion BibTeX citation"><code id="bibtex-code">@inproceedings{frescodiffusion2026,
+      <div class="bibtex-card"><button type="button" class="copy-bibtex-btn" data-copy-bibtex aria-label="Copy BibTeX citation to clipboard"><i class="fas fa-copy" aria-hidden="true"></i><span class="copy-text" aria-live="polite">Copy BibTeX</span></button><pre class="bibtex-scroll" tabindex="0" aria-label="Horizontally scrollable BibTeX citation"><code id="bibtex-code">@inproceedings{frescodiffusion2026,
       title={{FrescoDiffusion}: 4K Image-to-Video with Prior-Regularized Tiled Diffusion},
       author={Hugo Caselles-Dupré and Mathis Koroglu and Guillaume Jeanneret and Arnaud Dapogny and Matthieu Cord},
       booktitle={The 2nd Workshop on Multimodal Large Language Models for Unified Comprehension and Generation (MUCG)},

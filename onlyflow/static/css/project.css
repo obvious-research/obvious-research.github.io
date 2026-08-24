@@ -6,15 +6,6 @@
 .result-block video { display: block; width: 100%; margin-top: 1.25rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); background: #050505; }
 .figure-caption { max-width: 900px; margin: 1rem auto 0; color: var(--text-secondary); text-align: center; }
 .architecture-figure { display: block; width: min(100%, 960px); margin: 0 auto 1.5rem; }
-.bibtex-container { position: relative; }
-.copy-bibtex-btn { position: absolute; top: 0.85rem; right: 0.85rem; z-index: 2; display: inline-flex; align-items: center; gap: .55rem; padding: .72rem 1rem; border: 2px solid white; border-radius: 10px; background: var(--primary-color); color: white; box-shadow: 0 7px 20px rgb(37 99 235 / .3); cursor: pointer; font-weight: 800; }
-.copy-bibtex-btn:hover { background: var(--primary-hover); color: white; box-shadow: 0 10px 24px rgb(37 99 235 / .38); }
-.copy-bibtex-btn:focus-visible { outline: 3px solid rgb(37 99 235 / .3); outline-offset: 3px; }
-.copy-bibtex-btn.copied { background: #047857; }
-.copy-bibtex-btn.copied .copy-text::after { content: none; }
-#BibTeX pre { padding-top: 4.5rem !important; }
 @media (max-width: 620px) {
   .publication-header .hero-body { padding-top: 5.5rem; }
-  .copy-bibtex-btn { position: relative; top: auto; right: auto; margin-bottom: .65rem; }
-  #BibTeX pre { padding-top: 1.5rem !important; }
 }

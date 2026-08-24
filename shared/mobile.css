@@ -141,55 +141,6 @@ body.touch-viewer-open {
   overscroll-behavior: none;
 }
 
-.bibtex-card {
-  position: relative;
-  display: block;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.bibtex-card .copy-bibtex-btn {
-  position: absolute;
-  top: .75rem;
-  right: .75rem;
-  z-index: 3;
-  margin: 0;
-}
-
-.bibtex-card pre {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  white-space: pre;
-  overflow-wrap: normal;
-  word-break: normal;
-  -webkit-overflow-scrolling: touch;
-}
-
-.bibtex-card pre code {
-  display: block;
-  width: max-content;
-  min-width: 100%;
-  white-space: pre;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-@media screen and (min-width: 769px) {
-  .bibtex-wide-container {
-    width: min(100%, 80rem);
-    max-width: 80rem;
-  }
-}
-
 @media (hover: none), (pointer: coarse) {
   .touch-figure-hint {
     display: block;
@@ -236,14 +187,8 @@ body.touch-viewer-open {
 
   .publication-links .button,
   .carousel-arrow,
-  .more-works-btn,
-  .copy-bibtex-btn {
+  .more-works-btn {
     min-height: 44px;
-  }
-
-  .bibtex-card pre {
-    padding: 4rem 1rem 1rem !important;
-    touch-action: pan-x pan-y;
   }
 
   .more-works-container {
