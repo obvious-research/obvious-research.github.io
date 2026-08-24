@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let zoom = 4;
     let lensDiameter = 180;
 
+    const normalizedWheelDelta = (event) => {
+      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
+      if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight;
+      return event.deltaY;
+    };
+
     const syncLensDiameter = () => {
       const visibleWidths = sources.map((source) => source.clientWidth).filter((width) => width > 0);
       if (!visibleWidths.length) return;
@@ -42,8 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
       source.addEventListener('pointerenter', syncLensDiameter);
       source.addEventListener('wheel', (event) => {
         if (!group.classList.contains('is-zooming')) return;
-        event.preventDefault();
-        zoom = Math.max(minimumZoom, Math.min(maximumZoom, zoom * Math.exp(-event.deltaY * 0.0015)));
+
+        const deltaY = normalizedWheelDelta(event);
+        if (!deltaY || !event.cancelable) return;
+
+        const nextZoom = Math.max(minimumZoom, Math.min(maximumZoom, zoom * Math.exp(-deltaY * 0.0015)));
+        const reachedBoundary = nextZoom === minimumZoom || nextZoom === maximumZoom;
+
+        if (!reachedBoundary) event.preventDefault();
+        zoom = nextZoom;
         applyZoom();
       }, { passive: false });
     });

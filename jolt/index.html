@@ -25,7 +25,7 @@
   <meta name="citation_author" content="Cord, Matthieu">
   <meta name="citation_author" content="Dapogny, Arnaud">
   <meta name="citation_publication_date" content="2026">
-  <meta name="citation_pdf_url" content="https://obvious-research.github.io/jolt/static/pdfs/jolt.pdf">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2608.15395">
   <meta name="theme-color" content="#2563eb">
   <title>JoLT | Obvious Research</title>
   <link rel="icon" type="image/jpeg" href="static/images/main/jolt_refined_output_4096.jpg">
@@ -84,7 +84,7 @@
       </div>
       <div class="is-size-5 publication-authors"><span class="author-block"><a href="https://www.obvious-art.com/research" target="_blank" rel="noopener"><sup>1</sup>Obvious Research</a> &nbsp; <a href="https://www.isir.upmc.fr/isir/?lang=en" target="_blank" rel="noopener"><sup>2</sup>Sorbonne Université, CNRS, ISIR</a> &nbsp; <a href="https://valeoai.github.io/" target="_blank" rel="noopener"><sup>3</sup>Valeo.ai</a></span></div>
       <div class="column has-text-centered"><div class="publication-links">
-        <span class="link-block"><a href="static/pdfs/jolt.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span></a></span>
+        <span class="link-block"><a href="https://arxiv.org/abs/2608.15395" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark"><span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span></a></span>
       </div></div>
     </div></div></div></div></section>
 
@@ -95,7 +95,7 @@
           <figure class="ours"><figcaption><strong>JoLT (ours)</strong><span>4096² px</span></figcaption><div class="zoom-source"><img src="static/images/main/jolt_refined_output_4096.jpg" alt="JoLT refined generation at 4096 square pixels"></div></figure>
         </div>
       </div>
-      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to compare the same area, then scroll over it to change the magnification.</p>
+      <p class="zoom-hint"><i class="fas fa-search-plus"></i> Hover either image to compare the same area, then scroll over it to change the magnification. Page scrolling resumes at the 2× and 8× limits.</p>
       <p class="content has-text-centered main-caption"><strong>Controllable high-resolution generation.</strong> The master prompt establishes the scene; the detail prompt and feedback strength α control local density and style while JoLT preserves a coherent global composition.</p>
       <p class="setup-note"><strong>Figure 1 setup.</strong> FLUX.2 Klein-9B, four denoising steps, and a fixed seed. The base view is generated at 2048². JoLT produces 4096² with 1024² high-resolution windows, 512 px stride, and α = 0.25.</p>
     </div></section>
@@ -176,11 +176,11 @@
       <p class="section-lede">A single feedback strength controls how strongly the evolving high-resolution canvas influences the low-resolution trajectory.</p>
       <p class="example-prompt section-prompt"><span>Prompt</span>An aerial view reveals a flooded suburb reorganized by violin bridges, rice paddies, meteorological balloons, and concrete playground slides; the bridges guide boats between houses, paddies occupy former streets, and balloon shadows curve across the slides and water as a shared directional system.</p>
       <div class="alpha-grid zoom-group">
-        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0.jpg" alt="JoLT output with alpha 0" loading="lazy"></div><figcaption>α = 0</figcaption></figure>
-        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p25.jpg" alt="JoLT output with alpha 0.25" loading="lazy"></div><figcaption>α = 0.25</figcaption></figure>
-        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p50.jpg" alt="JoLT output with alpha 0.5" loading="lazy"></div><figcaption>α = 0.50</figcaption></figure>
-        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p75.jpg" alt="JoLT output with alpha 0.75" loading="lazy"></div><figcaption>α = 0.75</figcaption></figure>
-        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_1p0.jpg" alt="JoLT output with alpha 1" loading="lazy"></div><figcaption>α = 1.0</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0_source.jpg" alt="JoLT output with alpha 0" loading="lazy"></div><figcaption>α = 0</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p25_source.jpg" alt="JoLT output with alpha 0.25" loading="lazy"></div><figcaption>α = 0.25</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p50_source.jpg" alt="JoLT output with alpha 0.5" loading="lazy"></div><figcaption>α = 0.50</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_0p75_source.jpg" alt="JoLT output with alpha 0.75" loading="lazy"></div><figcaption>α = 0.75</figcaption></figure>
+        <figure><div class="zoom-source"><img src="static/images/alpha/alpha_1p0_source.jpg" alt="JoLT output with alpha 1" loading="lazy"></div><figcaption>α = 1.0</figcaption></figure>
       </div>
       <div class="complexity-arrow" aria-label="Complexity increases from left to right"><span>Complexity increases</span></div>
       <p class="content has-text-centered main-caption">Higher α progressively increases visible texture and local structure. α = 0.25 is the conservative default used in the main comparisons.</p>
