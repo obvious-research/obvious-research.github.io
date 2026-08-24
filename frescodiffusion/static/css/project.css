@@ -80,8 +80,18 @@
 .bibtex-container { position: relative; }
 .copy-bibtex-btn { position: absolute; top: 0.75rem; right: 0.75rem; z-index: 2; padding: 0.55rem 0.8rem; border: 0; border-radius: 8px; background: var(--primary-color); color: white; box-shadow: var(--shadow-md); cursor: pointer; font-weight: 700; }
 .copy-bibtex-btn.copied .copy-text::after { content: none; }
+#BibTeX .bibtex-scroll { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+#BibTeX .bibtex-scroll pre { width: max-content; min-width: 100%; max-width: none; box-sizing: border-box; margin: 0; overflow: visible; white-space: pre; }
+#BibTeX .bibtex-scroll code { white-space: inherit; }
 @media (max-width: 1050px) {
   .dataset-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  #BibTeX .bibtex-container { display: block; width: 100%; min-width: 0; max-width: 100%; }
+  #BibTeX .bibtex-container .copy-bibtex-btn { position: absolute; top: .75rem; right: .75rem; margin: 0; }
+  #BibTeX .bibtex-scroll { touch-action: pan-x; cursor: grab; }
+  #BibTeX .bibtex-scroll:active { cursor: grabbing; }
+  #BibTeX .bibtex-scroll pre { padding-top: 4.25rem !important; }
 }
 @media (max-width: 620px) {
   .publication-header .hero-body { padding-top: 5.5rem; }
