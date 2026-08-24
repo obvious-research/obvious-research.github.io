@@ -195,6 +195,8 @@ body.touch-viewer-open {
   .bibtex-container {
     display: flex;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -205,15 +207,24 @@ body.touch-viewer-open {
   }
 
   .bibtex-container pre {
+    display: block;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
     margin: 0;
     padding: 1rem !important;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    white-space: pre;
+    overflow-wrap: normal;
+    -webkit-overflow-scrolling: touch;
   }
 
   .bibtex-container code {
     white-space: inherit;
+    overflow-wrap: inherit;
   }
 
   .more-works-container {
