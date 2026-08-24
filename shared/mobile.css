@@ -192,6 +192,30 @@ body.touch-viewer-open {
     min-height: 44px;
   }
 
+  .bibtex-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bibtex-container .copy-bibtex-btn {
+    position: static;
+    margin-bottom: .75rem;
+  }
+
+  .bibtex-container pre {
+    width: 100%;
+    margin: 0;
+    padding: 1rem !important;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .bibtex-container code {
+    white-space: inherit;
+  }
+
   .more-works-container {
     right: max(.75rem, env(safe-area-inset-right));
     bottom: max(.75rem, env(safe-area-inset-bottom));
