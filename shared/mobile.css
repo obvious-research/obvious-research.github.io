@@ -183,6 +183,13 @@ body.touch-viewer-open {
   word-break: normal;
 }
 
+@media screen and (min-width: 769px) {
+  .bibtex-wide-container {
+    width: min(100%, 80rem);
+    max-width: 80rem;
+  }
+}
+
 @media (hover: none), (pointer: coarse) {
   .touch-figure-hint {
     display: block;
