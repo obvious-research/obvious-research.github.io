@@ -3,160 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f3ef">
-  <meta name="description" content="Publications from Obvious Research on controllable image and video generation.">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="description" content="An index of paper project pages from Obvious Research.">
   <link rel="canonical" href="https://obvious-research.github.io/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Obvious Research">
-  <meta property="og:title" content="Obvious Research — Publications">
-  <meta property="og:description" content="Research on controllable image and video generation, from motion guidance to 4K diffusion.">
+  <meta property="og:title" content="Obvious Research — Paper Project Pages">
+  <meta property="og:description" content="An index of paper project pages from Obvious Research.">
   <meta property="og:url" content="https://obvious-research.github.io/">
   <meta property="og:image" content="https://obvious-research.github.io/static/images/jolt-card.webp">
   <meta property="og:image:alt" content="A detailed architectural scene generated with JoLT">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Obvious Research — Publications">
-  <meta name="twitter:description" content="Research on controllable image and video generation.">
+  <meta name="twitter:title" content="Obvious Research — Paper Project Pages">
+  <meta name="twitter:description" content="An index of paper project pages from Obvious Research.">
   <meta name="twitter:image" content="https://obvious-research.github.io/static/images/jolt-card.webp">
 
-  <title>Obvious Research — Publications</title>
+  <title>Obvious Research — Paper Project Pages</title>
   <link rel="icon" href="onlyflow/static/images/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="home.css?v=1">
+  <link rel="stylesheet" href="home.css?v=2">
 </head>
-<body id="top">
-  <a class="skip-link" href="#publications">Skip to publications</a>
-
+<body>
   <header class="site-header">
-    <div class="shell header-inner">
-      <a class="brand" href="/" aria-label="Obvious Research home">
-        <span class="brand-mark" aria-hidden="true"><span></span></span>
-        <span>Obvious Research</span>
-      </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#publications">Publications</a>
-        <a class="nav-secondary" href="https://www.obvious-art.com/research" target="_blank" rel="noopener">About our research <span aria-hidden="true">&#8599;</span></a>
-      </nav>
+    <div class="container header-inner">
+      <a class="wordmark" href="/">Obvious Research</a>
+      <a class="header-link" href="https://www.obvious-art.com/research" target="_blank" rel="noopener">Obvious website <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> Generative vision research</p>
-          <h1 id="hero-title">Images that grow.<br>Motion that <em>listens.</em></h1>
-          <p class="hero-intro">We develop controllable generative methods for high-resolution images and video—connecting structure, motion, and detail without sacrificing coherence.</p>
-          <a class="hero-link" href="#publications">Explore our publications <span aria-hidden="true">&#8595;</span></a>
+  <main class="container">
+    <div class="page-heading">
+      <p>Publications</p>
+      <h1>Paper project pages</h1>
+      <p class="intro">A simple index of our available publication websites.</p>
+    </div>
+
+    <section class="paper-grid" aria-label="Available paper project pages">
+      <article class="paper-card">
+        <a class="thumbnail thumbnail--photo" href="jolt/" aria-label="Open the JoLT project page">
+          <img src="static/images/jolt-card.webp" width="1600" height="1600" alt="Detailed architectural scene generated with JoLT" fetchpriority="high">
+        </a>
+        <div class="paper-content">
+          <p class="venue">AI4VA Workshop · ECCV 2026</p>
+          <h2><a href="jolt/">JoLT</a></h2>
+          <p class="full-title">Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation</p>
+          <p class="authors">Mathis Koroglu, Guillaume Jeanneret, Hugo Caselles-Dupré, Matthieu Cord, Arnaud Dapogny</p>
+          <div class="paper-links">
+            <a class="project-link" href="jolt/">Project page <span aria-hidden="true">→</span></a>
+            <a href="https://arxiv.org/abs/2608.15395" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
+      </article>
 
-        <dl class="research-facts" aria-label="Research overview">
-          <div>
-            <dt>03</dt>
-            <dd>Publications</dd>
+      <article class="paper-card">
+        <a class="thumbnail thumbnail--figure" href="frescodiffusion/" aria-label="Open the FrescoDiffusion project page">
+          <img src="static/images/frescodiffusion-card.webp" width="1800" height="869" alt="FrescoDiffusion input and output comparison" loading="lazy">
+        </a>
+        <div class="paper-content">
+          <p class="venue">MUCG Workshop · ECCV 2026</p>
+          <h2><a href="frescodiffusion/">FrescoDiffusion</a></h2>
+          <p class="full-title">4K Image-to-Video with Prior-Regularized Tiled Diffusion</p>
+          <p class="authors">Hugo Caselles-Dupré, Mathis Koroglu, Guillaume Jeanneret, Arnaud Dapogny, Matthieu Cord</p>
+          <div class="paper-links">
+            <a class="project-link" href="frescodiffusion/">Project page <span aria-hidden="true">→</span></a>
+            <a href="https://arxiv.org/abs/2603.17555" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
           </div>
-          <div>
-            <dt>2025—26</dt>
-            <dd>Recent work</dd>
-          </div>
-          <div>
-            <dt>Image + Video</dt>
-            <dd>Generative models</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="publications" id="publications" aria-labelledby="publications-title">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <p class="section-number">01 / Publications</p>
-            <h2 id="publications-title">Our papers</h2>
-          </div>
-          <p>All publications from Obvious Research, newest first.</p>
         </div>
+      </article>
 
-        <div class="publication-list">
-          <article class="publication-card" aria-labelledby="jolt-title">
-            <a class="publication-media publication-media--jolt" href="jolt/" aria-label="Open the JoLT project page">
-              <img src="static/images/jolt-card.webp" width="1600" height="1600" alt="Intricate golden architecture generated at high resolution with JoLT" fetchpriority="high">
-              <span class="media-label">4096² generation</span>
-            </a>
-            <div class="publication-body">
-              <div class="publication-meta">
-                <span><time datetime="2026">2026</time></span>
-                <span>AI4VA Workshop at ECCV 2026</span>
-              </div>
-              <h3 id="jolt-title"><a href="jolt/"><span class="paper-name">JoLT</span>: Joint Latent Trajectories for Context-Guided High-Resolution Tiled Generation</a></h3>
-              <p class="authors">Mathis Koroglu, Guillaume Jeanneret, Hugo Caselles-Dupré, Matthieu Cord, Arnaud Dapogny</p>
-              <p class="abstract">A training-free approach that jointly denoises low- and high-resolution latent trajectories for controllable, densely detailed image generation at 4096² and beyond.</p>
-              <div class="publication-links" aria-label="JoLT links">
-                <a class="link-primary" href="jolt/">Project page <span aria-hidden="true">&#8594;</span></a>
-                <a href="https://arxiv.org/abs/2608.15395" target="_blank" rel="noopener">Paper <span aria-hidden="true">&#8599;</span></a>
-                <a href="https://openreview.net/forum?id=9hGsmtZrCI" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">&#8599;</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" aria-labelledby="fresco-title">
-            <a class="publication-media publication-media--figure" href="frescodiffusion/" aria-label="Open the FrescoDiffusion project page">
-              <img src="static/images/frescodiffusion-card.webp" width="1800" height="869" alt="FrescoDiffusion comparison showing a fresco input and detailed animated output crops" loading="lazy">
-              <span class="media-label">4K image-to-video</span>
-            </a>
-            <div class="publication-body">
-              <div class="publication-meta">
-                <span><time datetime="2026">2026</time></span>
-                <span>MUCG Workshop at ECCV 2026</span>
-              </div>
-              <h3 id="fresco-title"><a href="frescodiffusion/"><span class="paper-name">FrescoDiffusion</span>: 4K Image-to-Video with Prior-Regularized Tiled Diffusion</a></h3>
-              <p class="authors">Hugo Caselles-Dupré, Mathis Koroglu, Guillaume Jeanneret, Arnaud Dapogny, Matthieu Cord</p>
-              <p class="abstract">A training-free method for coherent 4K animation of large, complex images using prior-regularized tiled diffusion.</p>
-              <div class="publication-links" aria-label="FrescoDiffusion links">
-                <a class="link-primary" href="frescodiffusion/">Project page <span aria-hidden="true">&#8594;</span></a>
-                <a href="https://arxiv.org/abs/2603.17555" target="_blank" rel="noopener">Paper <span aria-hidden="true">&#8599;</span></a>
-                <a href="https://huggingface.co/datasets/obvious-research/FrescoArchive" target="_blank" rel="noopener">Dataset <span aria-hidden="true">&#8599;</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" aria-labelledby="onlyflow-title">
-            <a class="publication-media publication-media--figure" href="onlyflow/" aria-label="Open the OnlyFlow project page">
-              <img src="static/images/onlyflow-card.webp" width="1800" height="1063" alt="OnlyFlow architecture for optical-flow conditioning of video diffusion models" loading="lazy">
-              <span class="media-label">Motion conditioning</span>
-            </a>
-            <div class="publication-body">
-              <div class="publication-meta">
-                <span><time datetime="2025">2025</time></span>
-                <span>CVEU Workshop at CVPR 2025</span>
-              </div>
-              <h3 id="onlyflow-title"><a href="onlyflow/"><span class="paper-name">OnlyFlow</span>: Optical Flow based Motion Conditioning for Video Diffusion Models</a></h3>
-              <p class="authors">Mathis Koroglu, Hugo Caselles-Dupré, Guillaume Jeanneret, Matthieu Cord</p>
-              <p class="abstract">A lightweight optical-flow conditioning module for precise camera control, video editing, and motion transfer in text-to-video diffusion models.</p>
-              <div class="publication-links" aria-label="OnlyFlow links">
-                <a class="link-primary" href="onlyflow/">Project page <span aria-hidden="true">&#8594;</span></a>
-                <a href="https://arxiv.org/abs/2411.10501" target="_blank" rel="noopener">Paper <span aria-hidden="true">&#8599;</span></a>
-                <a href="https://github.com/obvious-research/OnlyFlow" target="_blank" rel="noopener">Code <span aria-hidden="true">&#8599;</span></a>
-                <a href="https://huggingface.co/obvious-research/onlyflow" target="_blank" rel="noopener">Hugging Face <span aria-hidden="true">&#8599;</span></a>
-              </div>
-            </div>
-          </article>
+      <article class="paper-card">
+        <a class="thumbnail thumbnail--figure" href="onlyflow/" aria-label="Open the OnlyFlow project page">
+          <img src="static/images/onlyflow-card.webp" width="1800" height="1063" alt="OnlyFlow optical-flow conditioning architecture" loading="lazy">
+        </a>
+        <div class="paper-content">
+          <p class="venue">CVEU Workshop · CVPR 2025</p>
+          <h2><a href="onlyflow/">OnlyFlow</a></h2>
+          <p class="full-title">Optical Flow based Motion Conditioning for Video Diffusion Models</p>
+          <p class="authors">Mathis Koroglu, Hugo Caselles-Dupré, Guillaume Jeanneret, Matthieu Cord</p>
+          <div class="paper-links">
+            <a class="project-link" href="onlyflow/">Project page <span aria-hidden="true">→</span></a>
+            <a href="https://arxiv.org/abs/2411.10501" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-      </div>
+      </article>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-inner">
-      <p><span class="footer-mark" aria-hidden="true"></span> Obvious Research</p>
-      <div>
-        <a href="https://www.obvious-art.com/research" target="_blank" rel="noopener">obvious-art.com/research <span aria-hidden="true">&#8599;</span></a>
-        <a href="#top">Back to top <span aria-hidden="true">&#8593;</span></a>
-      </div>
-    </div>
+    <div class="container">Obvious Research · 2026</div>
   </footer>
 </body>
 </html>
